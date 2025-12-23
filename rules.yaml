@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 version: 3
 description: >
   Heurística baseada em palavras-chave para sugerir especialidade.
@@ -2201,11 +2202,66 @@ specialties:
       - "mal estar"
       - "febre"
       - "dor no corpo"
+=======
+version: 1
+specialties:
+  - name: "Cardiologia"
+    confidence: 0.75
+    keywords:
+      - "dor no peito"
+      - "pressão alta"
+      - "palpitação"
+      - "arritmia"
+      - "colesterol"
+      - "falta de ar"
+    why: "Termos associados a sintomas e condições cardiovasculares."
+    next_step: "Considere buscar avaliação com um(a) cardiologista para orientação."
+
+  - name: "Dermatologia"
+    confidence: 0.70
+    keywords:
+      - "lesão na pele"
+      - "mancha"
+      - "coceira"
+      - "alergia na pele"
+      - "eczema"
+      - "psoríase"
+    why: "Termos associados a queixas dermatológicas."
+    next_step: "Um(a) dermatologista pode orientar a avaliação adequada."
+
+  - name: "Ortopedia"
+    confidence: 0.70
+    keywords:
+      - "dor no joelho"
+      - "dor nas costas"
+      - "coluna"
+      - "torção"
+      - "fratura"
+      - "ombro"
+    why: "Termos associados a queixas musculoesqueléticas."
+    next_step: "Um(a) ortopedista pode ajudar a investigar a causa e orientar conduta."
+
+  - name: "Gastroenterologia"
+    confidence: 0.70
+    keywords:
+      - "dor abdominal"
+      - "azia"
+      - "refluxo"
+      - "diarreia"
+      - "constipação"
+      - "gastrite"
+    why: "Termos associados a sintomas gastrointestinais."
+    next_step: "Um(a) gastroenterologista pode orientar exames e tratamento."
+>>>>>>> 847ab09fe56758bb3a31b4f230420f274ea5fa2d
 
 fallback:
   name: "Clínica Médica"
   confidence: 0.55
+<<<<<<< HEAD
   why: >
     Não houve correspondência forte suficiente.
     Clínica médica é uma boa porta de entrada para triagem inicial.
+=======
+  why: "Não houve correspondência forte; clínica médica é uma boa porta de entrada para triagem."
+>>>>>>> 847ab09fe56758bb3a31b4f230420f274ea5fa2d
   next_step: "Um(a) clínico(a) pode orientar a especialidade adequada após avaliação."
