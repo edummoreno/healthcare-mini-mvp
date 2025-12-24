@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "locale": "pt-BR",
   "scoring": {
     "strongWeight": 2,
@@ -7,7 +7,52 @@
     "minScore": 1
   },
   "fallbackSpecialtyId": "clinica_medica",
-  "synonyms": {},
+  "synonyms": {
+    "dor de cabeça": [
+      "cefaleia"
+    ],
+    "falta de ar": [
+      "dispneia"
+    ],
+    "desmaio": [
+      "síncope"
+    ],
+    "formigamento": [
+      "parestesia"
+    ],
+    "dor nas costas": [
+      "lombalgia"
+    ],
+    "dor no estômago": [
+      "epigastralgia",
+      "dor epigástrica"
+    ],
+    "azia": [
+      "pirose"
+    ],
+    "refluxo": [
+      "refluxo gastroesofágico",
+      "drge"
+    ],
+    "pressão alta": [
+      "hipertensão"
+    ],
+    "infecção urinária": [
+      "itu"
+    ],
+    "dor ao urinar": [
+      "disúria"
+    ],
+    "cálculo renal": [
+      "nefrolitíase"
+    ],
+    "palpitação": [
+      "palpitações"
+    ],
+    "cárie": [
+      "cáries"
+    ]
+  },
   "specialties": [
     {
       "id": "odontologia_dentista",
@@ -23,7 +68,6 @@
         "dor de dentes",
         "dente quebrado",
         "cárie",
-        "carie",
         "canal",
         "gengiva inchada",
         "sangramento na gengiva",
@@ -40,7 +84,6 @@
         "gengiva",
         "dente",
         "mau hálito",
-        "mau halito",
         "sensibilidade ao frio",
         "sensibilidade ao quente",
         "dor ao mastigar"
@@ -54,21 +97,17 @@
       "strong": [
         "oftalmologista",
         "visão embaçada",
-        "visao embacada",
         "olho vermelho",
         "dor no olho",
         "conjuntivite",
         "grau do óculos",
-        "grau do oculos",
         "miopia",
         "astigmatismo",
         "catarata",
         "vista embaçada",
         "visao turva",
         "não enxergo direito",
-        "nao enxergo direito",
-        "terçol",
-        "tercol"
+        "terçol"
       ],
       "weak": [
         "coceira no olho",
@@ -76,11 +115,9 @@
         "olho seco",
         "fotofobia",
         "sensibilidade à luz",
-        "sensibilidade a luz",
         "vista cansada",
         "olhos cansados",
-        "ardência no olho",
-        "ardencia no olho"
+        "ardência no olho"
       ]
     },
     {
@@ -90,34 +127,26 @@
       "generalist": false,
       "strong": [
         "obstetrícia",
-        "obstetricia",
         "obstetra",
         "pré-natal",
-        "pre natal",
         "gestante",
         "gravidez",
         "grávida",
-        "gravida",
         "trabalho de parto",
         "parto",
         "ultrassom obstétrico",
-        "ultrassom obstetrico",
         "teste de gravidez positivo",
         "suspeita de gravidez",
         "estou grávida",
-        "estou gravida",
         "sangramento na gravidez"
       ],
       "weak": [
         "enjoo na gravidez",
         "nausea na gravidez",
         "dor pélvica na gravidez",
-        "dor pelvica na gravidez",
         "contrações",
-        "contracoes",
         "bolsa rompeu",
         "perda de líquido",
-        "perda de liquido",
         "dor na barriga na gravidez",
         "dor abdominal na gravidez"
       ]
@@ -131,14 +160,11 @@
         "ginecologista",
         "obstetra",
         "pré-natal",
-        "pre natal",
         "gestante",
         "gravidez",
         "grávida",
-        "gravida",
         "atraso menstrual",
         "menstruação",
-        "menstruacao",
         "sangramento vaginal",
         "corrimento",
         "papanicolau",
@@ -147,20 +173,16 @@
         "anticoncepcional",
         "coceira vaginal",
         "dor na relação",
-        "dor na relacao",
         "corrimento com cheiro",
         "sangramento fora do ciclo"
       ],
       "weak": [
         "cólica",
-        "colica",
         "tpm",
         "menopausa",
         "dor pélvica",
-        "dor pelvica",
         "seca vaginal",
-        "diminuição da libido",
-        "diminuicao da libido"
+        "diminuição da libido"
       ]
     },
     {
@@ -177,11 +199,9 @@
         "amigdalite",
         "garganta inflamada",
         "rouquidão",
-        "rouquidao",
         "zumbido",
         "labirintite",
         "perda de audição",
-        "perda de audicao",
         "nariz sangrando",
         "sangramento nasal"
       ],
@@ -190,12 +210,10 @@
         "coriza",
         "espirros",
         "alergia respiratória",
-        "alergia respiratoria",
         "tontura",
         "dor de garganta",
         "dor facial",
-        "pressão no rosto",
-        "pressao no rosto"
+        "pressão no rosto"
       ]
     },
     {
@@ -209,20 +227,15 @@
         "ardor ao urinar",
         "dor ao urinar",
         "queimação ao urinar",
-        "queimacao ao urinar",
         "infecção urinária",
-        "infeccao urinaria",
         "cistite",
         "sangue na urina",
         "cálculo renal",
-        "calculo renal",
         "pedra no rim",
         "próstata",
-        "prostata",
         "urina com sangue",
         "dificuldade para urinar",
-        "infecção urinária recorrente",
-        "infeccao urinaria recorrente"
+        "infecção urinária recorrente"
       ],
       "weak": [
         "urinar muito",
@@ -231,9 +244,7 @@
         "jato fraco",
         "dor na virilha",
         "dor pélvica",
-        "dor pelvica",
         "disfunção erétil",
-        "disfuncao eretil",
         "acordo para urinar",
         "acordo a noite para urinar",
         "dor lombar"
@@ -246,30 +257,22 @@
       "generalist": false,
       "strong": [
         "reprodução humana",
-        "reproducao humana",
         "fertilidade",
         "infertilidade",
         "tentando engravidar",
         "não consigo engravidar",
-        "nao consigo engravidar",
         "fiv",
         "fertilização in vitro",
-        "fertilizacao in vitro",
         "inseminação artificial",
-        "inseminacao artificial",
         "congelamento de óvulos",
-        "congelamento de ovulos",
         "tentando ter filho",
         "tentando ter bebê",
-        "tentando ter bebe",
         "tratamento de fertilidade"
       ],
       "weak": [
         "ovulação",
-        "ovulacao",
         "ciclo irregular",
         "menstruação irregular",
-        "menstruacao irregular",
         "planejamento para engravidar",
         "tratamento para engravidar",
         "dificuldade para engravidar"
@@ -284,30 +287,22 @@
         "mastologia",
         "mastologista",
         "nódulo na mama",
-        "nodulo na mama",
         "caroço na mama",
-        "caroco na mama",
         "mamografia alterada",
         "ultrassom da mama alterado",
         "secreção no mamilo",
-        "secrecao no mamilo",
         "biópsia da mama",
-        "biopsia da mama",
         "caroço no seio",
-        "caroco no seio",
-        "secreção no seio",
-        "secrecao no seio"
+        "secreção no seio"
       ],
       "weak": [
         "dor na mama",
         "mama inchada",
         "mama inflamada",
         "alteração no mamilo",
-        "alteracao no mamilo",
         "cisto na mama",
         "sensibilidade na mama",
-        "incômodo na mama",
-        "incomodo na mama"
+        "incômodo na mama"
       ]
     },
     {
@@ -318,29 +313,21 @@
       "strong": [
         "dor no peito",
         "palpitação",
-        "palpitacao",
         "arritmia",
         "taquicardia",
         "falta de ar",
         "batimento acelerado",
         "aperto no peito",
         "pressão no peito",
-        "pressao no peito",
-        "coração acelerado",
-        "coracao acelerado"
+        "coração acelerado"
       ],
       "weak": [
         "pressão alta",
-        "pressao alta",
         "hipertensão",
-        "hipertensao",
         "colesterol alto",
         "cansaço",
-        "cansaco",
         "inchaço nas pernas",
-        "inchaco nas pernas",
         "cansaço aos esforços",
-        "cansaco aos esforcos",
         "tontura ao levantar"
       ]
     },
@@ -351,33 +338,24 @@
       "generalist": false,
       "strong": [
         "cirurgia plástica",
-        "cirurgia plastica",
         "cirurgião plástico",
-        "cirurgiao plastico",
         "rinoplastia",
         "lipoaspiração",
-        "lipoaspiracao",
         "abdominoplastia",
         "blefaroplastia",
         "reconstrução",
-        "reconstrucao",
         "cicatriz",
         "prótese de silicone",
-        "protese de silicone",
         "implante de silicone",
-        "redução de mama",
-        "reducao de mama"
+        "redução de mama"
       ],
       "weak": [
         "estética",
-        "estetica",
         "correção",
-        "correcao",
         "queimadura",
         "assimetria",
         "flacidez",
-        "procedimento estético",
-        "procedimento estetico"
+        "procedimento estético"
       ]
     },
     {
@@ -389,25 +367,17 @@
         "medicina fetal",
         "especialista em medicina fetal",
         "ultrassom morfológico",
-        "ultrassom morfologico",
         "doppler obstétrico",
-        "doppler obstetrico",
         "translucência nucal",
-        "translucencia nucal",
         "malformação fetal",
-        "malformacao fetal",
-        "gestação de alto risco",
-        "gestacao de alto risco"
+        "gestação de alto risco"
       ],
       "weak": [
         "ultrassom da gravidez",
         "ultrassom gestacional",
         "exame do bebê",
-        "exame do bebe",
         "alteração no ultrassom",
-        "alteracao no ultrassom",
-        "acompanhamento da gestação",
-        "acompanhamento da gestacao"
+        "acompanhamento da gestação"
       ]
     },
     {
@@ -422,23 +392,18 @@
         "coluna",
         "fratura",
         "torção",
-        "torcao",
         "entorse",
         "luxação",
-        "luxacao",
         "hérnia de disco",
-        "hernia de disco",
         "dor no ombro",
         "dor no quadril",
         "torci o tornozelo",
-        "torci o pé",
-        "torci o pe"
+        "torci o pé"
       ],
       "weak": [
         "dor muscular",
         "tendinite",
         "lesão",
-        "lesao",
         "ombro",
         "punho",
         "cotovelo",
@@ -455,7 +420,6 @@
         "neurologista",
         "enxaqueca",
         "convulsão",
-        "convulsao",
         "formigamento",
         "tremor",
         "fraqueza",
@@ -463,22 +427,15 @@
         "avc",
         "derrame",
         "perdi a força",
-        "perdi a forca",
-        "formigamento nas mãos",
-        "formigamento nas maos"
+        "formigamento nas mãos"
       ],
       "weak": [
         "dor de cabeça",
-        "dor de cabeca",
         "tontura",
         "memória",
-        "memoria",
         "insônia",
-        "insonia",
         "dormência",
-        "dormencia",
         "confusão mental",
-        "confusao mental",
         "esquecimento"
       ]
     },
@@ -493,11 +450,9 @@
         "diabetes",
         "glicose alta",
         "açúcar alto",
-        "acucar alto",
         "insulina",
         "hemoglobina glicada",
         "tireoide",
-        "tireóide",
         "hipotireoidismo",
         "hipertireoidismo",
         "hashimoto",
@@ -516,13 +471,10 @@
         "metabolismo",
         "colesterol",
         "triglicerídeos",
-        "triglicerideos",
         "cansaço",
-        "cansaco",
         "muita fome",
         "fome excessiva",
-        "compulsão alimentar",
-        "compulsao alimentar"
+        "compulsão alimentar"
       ]
     },
     {
@@ -537,7 +489,6 @@
         "hemorroida",
         "fissura anal",
         "fístula",
-        "fistula",
         "sangramento ao evacuar",
         "dor ao evacuar",
         "coceira anal"
@@ -546,7 +497,6 @@
         "dor anal",
         "prurido anal",
         "prisão de ventre",
-        "prisao de ventre",
         "diarreia frequente",
         "dor ao sentar"
       ]
@@ -559,10 +509,8 @@
       "strong": [
         "mancha na pele",
         "lesão na pele",
-        "lesao na pele",
         "coceira",
         "urticária",
-        "urticaria",
         "acne",
         "espinhas",
         "micose",
@@ -570,17 +518,14 @@
         "dermatite",
         "eczema",
         "psoríase",
-        "psoriase",
         "pele descamando"
       ],
       "weak": [
         "vermelhidão",
-        "vermelhidao",
         "alergia na pele",
         "pele ressecada",
         "pele seca",
         "irritação",
-        "irritacao",
         "pele irritada",
         "rash",
         "brotoeja"
@@ -597,35 +542,27 @@
         "ansiedade",
         "crise de ansiedade",
         "crise de pânico",
-        "crise de panico",
         "pânico",
-        "panico",
         "depressão",
-        "depressao",
         "transtorno bipolar",
         "bipolaridade",
         "toc",
         "transtorno obsessivo compulsivo",
         "esquizofrenia",
         "cansaço mental",
-        "cansaco mental",
         "esgotamento",
         "burnout",
-        "exaustão mental",
-        "exaustao mental"
+        "exaustão mental"
       ],
       "weak": [
         "insônia",
-        "insonia",
         "estresse",
         "stress",
         "humor",
         "irritabilidade",
         "falta de concentração",
-        "falta de concentracao",
         "ataque de nervos",
         "desânimo",
-        "desanimo",
         "sem energia",
         "sobrecarga"
       ]
@@ -642,31 +579,22 @@
         "refluxo",
         "gastrite",
         "úlcera",
-        "ulcera",
         "dor abdominal",
         "dor na barriga",
         "intestino",
         "síndrome do intestino irritável",
-        "sindrome do intestino irritavel",
         "dor no estômago",
-        "dor no estomago",
-        "intolerância alimentar",
-        "intolerancia alimentar"
+        "intolerância alimentar"
       ],
       "weak": [
         "náusea",
-        "nausea",
         "vômito",
-        "vomito",
         "diarreia",
         "constipação",
-        "constipacao",
         "prisão de ventre",
-        "prisao de ventre",
         "gases",
         "estufamento",
         "má digestão",
-        "ma digestao",
         "empachamento"
       ]
     },
@@ -684,7 +612,6 @@
         "chiado",
         "falta de ar ao respirar",
         "tosse crônica",
-        "tosse cronica",
         "dpoc",
         "falta de ar ao esforço",
         "falta de ar aos esforços",
@@ -697,7 +624,6 @@
         "dor ao respirar",
         "aperto no peito",
         "respiração curta",
-        "respiracao curta",
         "tosse com catarro"
       ]
     },
@@ -712,24 +638,17 @@
         "rim",
         "rins",
         "insuficiência renal",
-        "insuficiencia renal",
         "creatinina alta",
         "ureia alta",
         "hemodiálise",
-        "hemodialise",
         "diálise",
-        "dialise",
-        "proteinúria",
-        "proteinuria"
+        "proteinúria"
       ],
       "weak": [
         "inchaço",
-        "inchaco",
         "inchaço nas pernas",
-        "inchaco nas pernas",
         "urina espumosa",
         "pressão alta",
-        "pressao alta",
         "dor no rim"
       ]
     },
@@ -743,19 +662,15 @@
         "alergologia",
         "alergia",
         "urticária",
-        "urticaria",
         "angioedema",
         "anafilaxia",
         "teste alérgico",
-        "teste alergico",
         "imunoterapia",
         "vacina para alergia",
         "rinite alérgica",
-        "rinite alergica",
         "alergia alimentar",
         "rinite",
-        "asma alérgica",
-        "asma alergica"
+        "asma alérgica"
       ],
       "weak": [
         "coceira",
@@ -763,12 +678,10 @@
         "coriza",
         "nariz escorrendo",
         "olhos coçando",
-        "olhos cocando",
         "alergia na pele",
         "chiado",
         "espirro",
-        "nariz coçando",
-        "nariz cocando"
+        "nariz coçando"
       ]
     },
     {
@@ -787,19 +700,15 @@
         "plaquetas baixas",
         "plaquetas altas",
         "hemofilia",
-        "distúrbio de coagulação",
-        "disturbio de coagulacao"
+        "distúrbio de coagulação"
       ],
       "weak": [
         "hematócrito",
-        "hematocrito",
         "hemograma",
         "sangramento fácil",
-        "sangramento facil",
         "hematoma",
         "manchas roxas",
         "cansaço",
-        "cansaco",
         "palidez"
       ]
     },
@@ -812,28 +721,21 @@
         "oncologista",
         "oncologia",
         "câncer",
-        "cancer",
         "tumor",
         "neoplasia",
         "quimioterapia",
         "imunoterapia",
         "metástase",
-        "metastase",
-        "biópsia",
-        "biopsia"
+        "biópsia"
       ],
       "weak": [
         "nódulo",
-        "nodulo",
         "caroço",
-        "caroco",
         "perda de peso",
         "emagrecimento",
         "cansaço",
-        "cansaco",
         "linfonodo",
-        "íngua",
-        "ingua"
+        "íngua"
       ]
     },
     {
@@ -848,22 +750,17 @@
         "vasinhos",
         "trombose",
         "dor e inchaço na perna",
-        "dor e inchaco na perna",
         "má circulação",
-        "ma circulacao",
-        "claudicação",
-        "claudicacao"
+        "claudicação"
       ],
       "weak": [
         "perna inchada",
         "pernas inchadas",
         "inchaço nas pernas",
-        "inchaco nas pernas",
         "dor na perna",
         "formigamento na perna",
         "câimbra",
-        "cãibra",
-        "caibra"
+        "cãibra"
       ]
     },
     {
@@ -877,28 +774,21 @@
         "artrite",
         "artrite reumatoide",
         "lúpus",
-        "lupus",
         "gota",
         "fibromialgia",
         "dor nas articulações",
-        "dor nas articulacoes",
         "inchaço nas articulações",
-        "inchaco nas articulacoes",
         "dor nas juntas",
         "juntas inchadas",
-        "inflamação nas juntas",
-        "inflamacao nas juntas"
+        "inflamação nas juntas"
       ],
       "weak": [
         "dor articular",
         "rigidez",
         "rigidez de manhã",
-        "rigidez de manha",
         "dor no corpo",
         "dor crônica",
-        "dor cronica",
         "inflamação",
-        "inflamacao",
         "dor no corpo inteiro",
         "dor generalizada"
       ]
@@ -920,25 +810,19 @@
         "chikungunya",
         "mononucleose",
         "infecção recorrente",
-        "infeccao recorrente",
         "covid",
         "covid-19",
-        "infecção de repetição",
-        "infeccao de repeticao"
+        "infecção de repetição"
       ],
       "weak": [
         "febre prolongada",
         "febre persistente",
         "infecção",
-        "infeccao",
         "calafrios",
         "ínguas",
-        "inguas",
         "dor no corpo",
         "mal-estar",
-        "mal estar",
-        "febre que não passa",
-        "febre que nao passa"
+        "febre que não passa"
       ]
     },
     {
@@ -948,30 +832,19 @@
       "generalist": false,
       "strong": [
         "genética médica",
-        "genetica medica",
         "geneticista",
         "teste genético",
-        "teste genetico",
         "painel genético",
-        "painel genetico",
         "cariótipo",
-        "cariotipo",
         "mutação",
-        "mutacao",
         "síndrome genética",
-        "sindrome genetica",
-        "doença hereditária",
-        "doenca hereditaria"
+        "doença hereditária"
       ],
       "weak": [
         "histórico familiar",
-        "historico familiar",
         "doença rara",
-        "doenca rara",
         "malformação",
-        "malformacao",
-        "aconselhamento genético",
-        "aconselhamento genetico"
+        "aconselhamento genético"
       ]
     },
     {
@@ -982,11 +855,9 @@
       "strong": [
         "medicina do trabalho",
         "médico do trabalho",
-        "medico do trabalho",
         "exame admissional",
         "exame demissional",
         "exame periódico",
-        "exame periodico",
         "aso",
         "cat",
         "acidente de trabalho"
@@ -995,7 +866,6 @@
         "afastamento",
         "inss",
         "doença ocupacional",
-        "doenca ocupacional",
         "ergonomia"
       ]
     },
@@ -1007,9 +877,7 @@
       "strong": [
         "medicina do esporte",
         "médico do esporte",
-        "medico do esporte",
         "lesão esportiva",
-        "lesao esportiva",
         "retorno ao esporte",
         "atleta"
       ],
@@ -1017,8 +885,7 @@
         "treino",
         "corrida",
         "academia",
-        "dor após treino",
-        "dor apos treino"
+        "dor após treino"
       ]
     },
     {
@@ -1031,12 +898,10 @@
         "neonatologista",
         "uti neonatal",
         "recém-nascido",
-        "recem-nascido",
         "prematuro"
       ],
       "weak": [
         "amamentação",
-        "amamentacao",
         "dificuldade para mamar"
       ]
     },
@@ -1047,19 +912,13 @@
       "generalist": false,
       "strong": [
         "cardiologia pediátrica",
-        "cardiologia pediatrica",
         "cardiologista pediátrico",
-        "cardiologista pediatrico",
         "cardiopatia congênita",
-        "cardiopatia congenita",
-        "sopro no coração do bebê",
-        "sopro no coracao do bebe"
+        "sopro no coração do bebê"
       ],
       "weak": [
         "cansaço ao mamar",
-        "cansaco ao mamar",
-        "falta de ar na criança",
-        "falta de ar na crianca"
+        "falta de ar na criança"
       ]
     },
     {
@@ -1069,17 +928,12 @@
       "generalist": false,
       "strong": [
         "nefrologia pediátrica",
-        "nefrologia pediatrica",
         "rim na criança",
-        "rim na crianca",
-        "infecção urinária recorrente em criança",
-        "infeccao urinaria recorrente em crianca"
+        "infecção urinária recorrente em criança"
       ],
       "weak": [
         "urina espumosa na criança",
-        "urina espumosa na crianca",
-        "inchaço na criança",
-        "inchaco na crianca"
+        "inchaço na criança"
       ]
     },
     {
@@ -1091,13 +945,9 @@
         "nutrologia",
         "nutrologista",
         "deficiência nutricional",
-        "deficiencia nutricional",
         "suplementação",
-        "suplementacao",
         "reeducação alimentar",
-        "reeducacao alimentar",
-        "avaliação nutricional",
-        "avaliacao nutricional"
+        "avaliação nutricional"
       ],
       "weak": [
         "dieta",
@@ -1116,15 +966,13 @@
       "strong": [
         "cirurgia vascular",
         "cirurgião vascular",
-        "cirurgiao vascular",
         "cirurgia de varizes",
         "operar varizes"
       ],
       "weak": [
         "tratamento de varizes",
         "ferida na perna",
-        "úlcera na perna",
-        "ulcera na perna"
+        "úlcera na perna"
       ]
     },
     {
@@ -1135,10 +983,8 @@
       "strong": [
         "cirurgia cardiovascular",
         "cirurgia cardíaca",
-        "cirurgia cardiaca",
         "ponte de safena",
-        "troca de válvula",
-        "troca de valvula"
+        "troca de válvula"
       ],
       "weak": [
         "angioplastia",
@@ -1154,14 +1000,11 @@
       "strong": [
         "neurocirurgia",
         "neurocirurgião",
-        "neurocirurgiao",
         "cirurgia do cérebro",
-        "cirurgia do cerebro",
         "cirurgia de coluna"
       ],
       "weak": [
         "compressão do nervo",
-        "compressao do nervo",
         "dor irradiando"
       ]
     },
@@ -1178,15 +1021,11 @@
         "ronco",
         "narcolepsia",
         "não consigo dormir",
-        "nao consigo dormir",
-        "acordo várias vezes",
-        "acordo varias vezes"
+        "acordo várias vezes"
       ],
       "weak": [
         "insônia",
-        "insonia",
         "sonolência diurna",
-        "sonolencia diurna",
         "sono leve",
         "sono ruim"
       ]
@@ -1206,7 +1045,6 @@
       "weak": [
         "quedas",
         "polifarmácia",
-        "polifarmacia",
         "fragilidade"
       ]
     },
@@ -1219,16 +1057,12 @@
         "fisiatria",
         "fisiatra",
         "reabilitação",
-        "reabilitacao",
-        "reabilitação motora",
-        "reabilitacao motora"
+        "reabilitação motora"
       ],
       "weak": [
         "fisioterapia",
         "limitação de movimento",
-        "limitacao de movimento",
-        "dor crônica",
-        "dor cronica"
+        "dor crônica"
       ]
     },
     {
@@ -1238,15 +1072,11 @@
       "generalist": false,
       "strong": [
         "cirurgia torácica",
-        "cirurgia toracica",
         "cirurgião torácico",
-        "cirurgiao toracico",
-        "pneumotórax",
-        "pneumotorax"
+        "pneumotórax"
       ],
       "weak": [
         "nódulo no pulmão",
-        "nodulo no pulmao",
         "pleura"
       ]
     },
@@ -1259,13 +1089,10 @@
         "cirurgia digestiva",
         "cirurgia do aparelho digestivo",
         "cirurgia bariátrica",
-        "cirurgia bariatrica",
-        "bariátrica",
-        "bariatrica"
+        "bariátrica"
       ],
       "weak": [
         "hérnia de hiato",
-        "hernia de hiato",
         "refluxo cirurgia"
       ]
     },
@@ -1278,15 +1105,11 @@
         "cirurgia de cabeça e pescoço",
         "cirurgia cabeca e pescoco",
         "nódulo no pescoço",
-        "nodulo no pescoco",
-        "tireoide nódulo",
-        "tireoide nodulo"
+        "tireoide nódulo"
       ],
       "weak": [
         "rouquidão persistente",
-        "rouquidao persistente",
-        "caroço no pescoço",
-        "caroco no pescoco"
+        "caroço no pescoço"
       ]
     },
     {
@@ -1302,7 +1125,6 @@
       ],
       "weak": [
         "tratamento oncológico",
-        "tratamento oncologico",
         "quimioterapia",
         "tumor"
       ]
@@ -1315,17 +1137,13 @@
       "strong": [
         "cirurgia geral",
         "cirurgião geral",
-        "cirurgiao geral",
         "apendicite",
         "hérnia",
-        "hernia",
         "colecistectomia"
       ],
       "weak": [
         "pré-operatório",
-        "pre-operatorio",
         "pós-operatório",
-        "pos-operatorio",
         "curativo"
       ]
     },
@@ -1336,16 +1154,12 @@
       "generalist": false,
       "strong": [
         "cirurgia pediátrica",
-        "cirurgia pediatrica",
         "cirurgião pediátrico",
-        "cirurgiao pediatrico",
         "fimose",
-        "hérnia inguinal criança",
-        "hernia inguinal crianca"
+        "hérnia inguinal criança"
       ],
       "weak": [
         "cirurgia em criança",
-        "cirurgia em crianca",
         "meu filho precisa operar",
         "minha filha precisa operar"
       ]
@@ -1358,11 +1172,8 @@
       "strong": [
         "pediatra",
         "criança",
-        "crianca",
         "bebê",
-        "bebe",
         "recém-nascido",
-        "recem-nascido",
         "meu filho",
         "minha filha"
       ],
@@ -1383,15 +1194,12 @@
         "anestesiologista",
         "anestesista",
         "sedação",
-        "sedacao",
         "raquidiana",
         "peridural"
       ],
       "weak": [
         "pré-anestésico",
-        "pre-anestesico",
-        "reação à anestesia",
-        "reacao a anestesia"
+        "reação à anestesia"
       ]
     },
     {
@@ -1402,17 +1210,14 @@
       "strong": [
         "tomografia",
         "ressonância",
-        "ressonancia",
         "ultrassom",
         "raio-x",
-        "raio x",
         "laudo de imagem"
       ],
       "weak": [
         "exame de imagem",
         "achado no exame",
-        "alteração no exame",
-        "alteracao no exame"
+        "alteração no exame"
       ]
     },
     {
@@ -1425,15 +1230,11 @@
         "cti",
         "intensivista",
         "ventilação mecânica",
-        "ventilacao mecanica",
-        "intubação",
-        "intubacao"
+        "intubação"
       ],
       "weak": [
         "paciente crítico",
-        "paciente critico",
-        "monitorização",
-        "monitorizacao"
+        "monitorização"
       ]
     },
     {
@@ -1443,18 +1244,14 @@
       "generalist": false,
       "strong": [
         "pronto socorro",
-        "pronto-socorro",
         "pronto atendimento",
         "upa",
         "samu",
         "urgência",
-        "urgencia",
-        "emergência",
-        "emergencia"
+        "emergência"
       ],
       "weak": [
         "observação",
-        "observacao",
         "fui ao pronto socorro"
       ]
     },
@@ -1472,10 +1269,8 @@
       ],
       "weak": [
         "doença avançada",
-        "doenca avancada",
         "cuidado domiciliar",
-        "dor oncológica",
-        "dor oncologica"
+        "dor oncológica"
       ]
     },
     {
@@ -1488,8 +1283,7 @@
         "gastroscopia",
         "colonoscopia",
         "endoscopia digestiva",
-        "pólipo",
-        "polipo"
+        "pólipo"
       ],
       "weak": [
         "preparo para colonoscopia",
@@ -1504,16 +1298,13 @@
       "generalist": false,
       "strong": [
         "perícia médica",
-        "pericia medica",
         "perito médico",
-        "perito medico",
         "laudo pericial",
         "inss"
       ],
       "weak": [
         "afastamento",
         "auxílio-doença",
-        "auxilio-doenca",
         "processo"
       ]
     },
@@ -1526,13 +1317,11 @@
         "medicina nuclear",
         "cintilografia",
         "pet-ct",
-        "pet ct",
         "spect",
         "iodo radioativo"
       ],
       "weak": [
         "captação",
-        "captacao",
         "laudo do pet",
         "exame radioativo"
       ]
@@ -1544,18 +1333,13 @@
       "generalist": false,
       "strong": [
         "médico de família",
-        "medico de familia",
         "medicina de família",
-        "medicina de familia",
-        "saúde da família",
-        "saude da familia"
+        "saúde da família"
       ],
       "weak": [
         "prevenção",
-        "prevencao",
         "rotina",
-        "posto de saúde",
-        "posto de saude"
+        "posto de saúde"
       ]
     },
     {
@@ -1567,15 +1351,11 @@
         "patologia",
         "patologista",
         "anatomopatológico",
-        "anatomopatologico",
-        "biópsia",
-        "biopsia"
+        "biópsia"
       ],
       "weak": [
         "laudo anatomopatológico",
-        "laudo anatomopatologico",
-        "imuno-histoquímica",
-        "imuno-histoquimica"
+        "imuno-histoquímica"
       ]
     },
     {
@@ -1586,7 +1366,6 @@
       "strong": [
         "medicina laboratorial",
         "patologia clínica",
-        "patologia clinica",
         "hemograma",
         "exame de sangue",
         "exames de sangue"
@@ -1604,39 +1383,31 @@
       "generalist": false,
       "strong": [
         "saúde pública",
-        "saude publica",
         "epidemiologia",
         "medicina preventiva"
       ],
       "weak": [
         "prevenção",
-        "prevencao",
         "rastreamento",
-        "campanha de vacinação",
-        "campanha de vacinacao"
+        "campanha de vacinação"
       ]
     },
     {
       "id": "clinica_medica",
       "displayName": "Clínica Médica",
       "confidence": 0.55,
-      "generalist": false,
+      "generalist": true,
       "strong": [
         "check-up",
-        "check up",
         "consulta geral",
         "clínico geral",
-        "clinico geral",
         "exames de rotina",
         "consulta de rotina",
-        "avaliação geral",
-        "avaliacao geral"
+        "avaliação geral"
       ],
       "weak": [
         "cansaço",
-        "cansaco",
         "mal-estar",
-        "mal estar",
         "febre",
         "dor no corpo"
       ]

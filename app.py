@@ -1,5 +1,5 @@
 import streamlit as st
-from engine_ruleset import load_ruleset, suggest_specialty
+from engine import load_rules, suggest_specialty
 
 st.set_page_config(
     page_title="Health Care",
@@ -213,12 +213,12 @@ with st.form("triage_form", clear_on_submit=False):
         submit = st.form_submit_button("Sugerir especialidade", type="primary", use_container_width=True)
 
 if submit:
-    user_text = (st.session_state.get("text") or "").strip()
+    user_text = st.session_state.get("text", "").strip()
     if not user_text:
         st.warning("Escreva um texto (genérico) para eu sugerir uma especialidade.")
     else:
-        rules = load_ruleset("ruleset.v5.json")
-        st.session_state.last = suggest_specialty(st.session_state.text, rules)
+        rules = load_rules("rules.yaml")  # <- era ruleset.v5.json
+        st.session_state.last = suggest_specialty(user_text, rules)
 
 if st.session_state.last is not None:
     s = st.session_state.last
