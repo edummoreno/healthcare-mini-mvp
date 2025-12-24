@@ -191,3 +191,8 @@ def suggest_specialty(user_text: str, ruleset: Dict[str, Any]) -> Suggestion:
         disclaimer=disclaimer,
         alternatives=alternatives,
     )
+
+# --- compat: alguns testes/arquivos esperam `suggest(...)` ---
+def suggest(text: str, ruleset: dict):
+    # se sua função principal se chama diferente, troque aqui:
+    return suggest_specialty(text, ruleset)
