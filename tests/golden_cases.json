@@ -1,0 +1,46 @@
+[
+  { "text": "Estou com dor de dente forte e gengiva inchada", "expected": "odontologia_dentista" },
+  { "text": "Meu siso inflamado e sangramento na gengiva", "expected": "odontologia_dentista" },
+
+  { "text": "Visão embaçada e olho vermelho, preciso de oftalmologista", "expected": "oftalmologia" },
+  { "text": "Terçol no olho e fotofobia", "expected": "oftalmologia" },
+
+  { "text": "Atraso menstrual e corrimento com cheiro", "expected": "ginecologia_e_obstetricia" },
+  { "text": "Estou grávida e quero pré-natal, ultrassom obstétrico", "expected": "obstetricia" },
+
+  { "text": "Dor de ouvido e sinusite com zumbido", "expected": "otorrinolaringologia" },
+  { "text": "Amigdalite e garganta inflamada com rouquidão", "expected": "otorrinolaringologia" },
+
+  { "text": "Ardor ao urinar e sangue na urina, cistite", "expected": "urologia" },
+  { "text": "Dificuldade para urinar e problema de próstata", "expected": "urologia" },
+
+  { "text": "Meu bebê precisa de pediatra para vacinas", "expected": "pediatria" },
+  { "text": "Minha filha é recém-nascida e quero puericultura", "expected": "pediatria" },
+
+  { "text": "Dor no peito e palpitações, coração acelerado", "expected": "cardiologia" },
+  { "text": "Pressão alta e aperto no peito", "expected": "cardiologia" },
+
+  { "text": "Azia e refluxo com dor no estômago", "expected": "gastroenterologia" },
+  { "text": "Síndrome do intestino irritável com dor abdominal", "expected": "gastroenterologia" },
+
+  { "text": "Tosse crônica e chiado no peito, asma", "expected": "pneumologia" },
+  { "text": "Falta de ar aos esforços e bronquite", "expected": "pneumologia" },
+
+  { "text": "Enxaqueca e formigamento nas mãos", "expected": "neurologia" },
+  { "text": "Tremor e convulsão com desmaio", "expected": "neurologia" },
+
+  { "text": "Glicose alta e diabetes, dificuldade para emagrecer", "expected": "endocrinologia_e_metabologia" },
+  { "text": "Hipotireoidismo e TSH alterado", "expected": "endocrinologia_e_metabologia" },
+
+  { "text": "Crise de pânico e ansiedade, burnout", "expected": "psiquiatria" },
+  { "text": "Depressão e transtorno bipolar", "expected": "psiquiatria" },
+
+  { "text": "Urticária e rinite alérgica, alergia alimentar", "expected": "alergia_e_imunologia" },
+  { "text": "Anafilaxia e angioedema", "expected": "alergia_e_imunologia" },
+
+  { "text": "Manchas na pele e coceira com micose", "expected": "dermatologia" },
+  { "text": "Acne e queda de cabelo com dermatite", "expected": "dermatologia" },
+
+  { "text": "Torci o tornozelo e estou com entorse e dor no joelho", "expected": "ortopedia_e_traumatologia" },
+  { "text": "Hérnia de disco e dor na coluna", "expected": "ortopedia_e_traumatologia" }
+]

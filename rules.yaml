@@ -1,2267 +1,1355 @@
-<<<<<<< HEAD
 version: 3
-description: >
-  Heurística baseada em palavras-chave para sugerir especialidade.
-  NÃO faz diagnóstico, NÃO prescreve, NÃO define urgência.
-  Confidence é heurístico (UX): "quão específica costuma ser a linguagem", não probabilidade clínica.
+description: 'Heurística baseada em palavras-chave para sugerir especialidade. NÃO faz diagnóstico, NÃO prescreve, NÃO define
+  urgência. Confidence é heurístico (UX): "quão específica costuma ser a linguagem", não probabilidade clínica.
 
+  '
 scoring:
   strong_weight: 2
   weak_weight: 1
-
 specialties:
-  # --- 0.83+ (bem específicos) ---
-  - name: "Odontologia (Dentista)"
-    confidence: 0.85
-    confidence_reason: "Linguagem dentária é altamente específica (1:1) no relato do usuário."
-    strong_keywords:
-      - "dentista"
-      - "odontologia"
-      - "dor no dente"
-      - "dor de dente"
-      - "dor nos dentes"
-      - "dor de dentes"
-      - "dente quebrado"
-      - "cárie"
-      - "carie"
-      - "canal"
-      - "gengiva inchada"
-      - "sangramento na gengiva"
-      - "abscesso"
-    weak_keywords:
-      - "sensibilidade no dente"
-      - "sensibilidade"
-      - "gengiva"
-      - "dente"
-      - "mau hálito"
-      - "mau halito"
-    keywords:
-      - "dentista"
-      - "odontologia"
-      - "dor no dente"
-      - "dor de dente"
-      - "dor nos dentes"
-      - "dor de dentes"
-      - "dente quebrado"
-      - "cárie"
-      - "carie"
-      - "canal"
-      - "gengiva inchada"
-      - "sangramento na gengiva"
-      - "abscesso"
-      - "sensibilidade no dente"
-      - "sensibilidade"
-      - "gengiva"
-      - "dente"
-      - "mau hálito"
-      - "mau halito"
-
-  - name: "Oftalmologia"
-    confidence: 0.82
-    confidence_reason: "Linguagem ocular (visão/olho) é bastante específica."
-    strong_keywords:
-      - "oftalmologista"
-      - "visão embaçada"
-      - "visao embacada"
-      - "olho vermelho"
-      - "dor no olho"
-      - "conjuntivite"
-      - "grau do óculos"
-      - "grau do oculos"
-      - "miopia"
-      - "astigmatismo"
-      - "catarata"
-    weak_keywords:
-      - "coceira no olho"
-      - "lacrimejamento"
-      - "olho seco"
-      - "fotofobia"
-      - "sensibilidade à luz"
-      - "sensibilidade a luz"
-    keywords:
-      - "oftalmologista"
-      - "visão embaçada"
-      - "visao embacada"
-      - "olho vermelho"
-      - "dor no olho"
-      - "conjuntivite"
-      - "grau do óculos"
-      - "grau do oculos"
-      - "miopia"
-      - "astigmatismo"
-      - "catarata"
-      - "coceira no olho"
-      - "lacrimejamento"
-      - "olho seco"
-      - "fotofobia"
-      - "sensibilidade à luz"
-      - "sensibilidade a luz"
-
-  - name: "Obstetrícia"
-    confidence: 0.80
-    confidence_reason: "Contexto de gestação/parto costuma ser altamente específico."
-    strong_keywords:
-      - "obstetrícia"
-      - "obstetricia"
-      - "obstetra"
-      - "pré-natal"
-      - "pre natal"
-      - "gestante"
-      - "gravidez"
-      - "grávida"
-      - "gravida"
-      - "trabalho de parto"
-      - "parto"
-      - "ultrassom obstétrico"
-      - "ultrassom obstetrico"
-    weak_keywords:
-      - "enjoo na gravidez"
-      - "nausea na gravidez"
-      - "dor pélvica na gravidez"
-      - "dor pelvica na gravidez"
-      - "contrações"
-      - "contracoes"
-      - "bolsa rompeu"
-      - "perda de líquido"
-      - "perda de liquido"
-    keywords:
-      - "obstetrícia"
-      - "obstetricia"
-      - "obstetra"
-      - "pré-natal"
-      - "pre natal"
-      - "gestante"
-      - "gravidez"
-      - "grávida"
-      - "gravida"
-      - "trabalho de parto"
-      - "parto"
-      - "ultrassom obstétrico"
-      - "ultrassom obstetrico"
-      - "enjoo na gravidez"
-      - "nausea na gravidez"
-      - "dor pélvica na gravidez"
-      - "dor pelvica na gravidez"
-      - "contrações"
-      - "contracoes"
-      - "bolsa rompeu"
-      - "perda de líquido"
-      - "perda de liquido"
-
-  # --- 0.78 ---
-  - name: "Ginecologia e Obstetrícia"
-    confidence: 0.78
-    confidence_reason: "Termos relacionados a ciclo/gestação costumam ser bem direcionadores."
-    strong_keywords:
-      - "ginecologista"
-      - "obstetra"
-      - "pré-natal"
-      - "pre natal"
-      - "gestante"
-      - "gravidez"
-      - "grávida"
-      - "gravida"
-      - "atraso menstrual"
-      - "menstruação"
-      - "menstruacao"
-      - "sangramento vaginal"
-      - "corrimento"
-      - "papanicolau"
-      - "preventivo"
-      - "diu"
-      - "anticoncepcional"
-    weak_keywords:
-      - "cólica"
-      - "colica"
-      - "tpm"
-      - "menopausa"
-      - "dor pélvica"
-      - "dor pelvica"
-    keywords:
-      - "ginecologista"
-      - "obstetra"
-      - "pré-natal"
-      - "pre natal"
-      - "gestante"
-      - "gravidez"
-      - "grávida"
-      - "gravida"
-      - "atraso menstrual"
-      - "menstruação"
-      - "menstruacao"
-      - "sangramento vaginal"
-      - "corrimento"
-      - "papanicolau"
-      - "preventivo"
-      - "diu"
-      - "anticoncepcional"
-      - "cólica"
-      - "colica"
-      - "tpm"
-      - "menopausa"
-      - "dor pélvica"
-      - "dor pelvica"
-
-  - name: "Otorrinolaringologia"
-    confidence: 0.78
-    confidence_reason: "Termos de ouvido/nariz/garganta são relativamente específicos."
-    strong_keywords:
-      - "otorrino"
-      - "otorrinolaringologista"
-      - "dor de ouvido"
-      - "otite"
-      - "sinusite"
-      - "amigdalite"
-      - "garganta inflamada"
-      - "rouquidão"
-      - "rouquidao"
-      - "zumbido"
-      - "labirintite"
-    weak_keywords:
-      - "nariz entupido"
-      - "coriza"
-      - "espirros"
-      - "alergia respiratória"
-      - "alergia respiratoria"
-      - "tontura"
-      - "dor de garganta"
-    keywords:
-      - "otorrino"
-      - "otorrinolaringologista"
-      - "dor de ouvido"
-      - "otite"
-      - "sinusite"
-      - "amigdalite"
-      - "garganta inflamada"
-      - "rouquidão"
-      - "rouquidao"
-      - "zumbido"
-      - "labirintite"
-      - "nariz entupido"
-      - "coriza"
-      - "espirros"
-      - "alergia respiratória"
-      - "alergia respiratoria"
-      - "tontura"
-      - "dor de garganta"
-
-  - name: "Urologia"
-    confidence: 0.78
-    confidence_reason: "Queixas urinárias costumam ser bem direcionadoras."
-    strong_keywords:
-      - "urologista"
-      - "urologia"
-      - "ardor ao urinar"
-      - "dor ao urinar"
-      - "queimação ao urinar"
-      - "queimacao ao urinar"
-      - "infecção urinária"
-      - "infeccao urinaria"
-      - "cistite"
-      - "sangue na urina"
-      - "cálculo renal"
-      - "calculo renal"
-      - "pedra no rim"
-      - "próstata"
-      - "prostata"
-    weak_keywords:
-      - "urinar muito"
-      - "urinar toda hora"
-      - "vontade frequente de urinar"
-      - "jato fraco"
-      - "dor na virilha"
-      - "dor pélvica"
-      - "dor pelvica"
-      - "disfunção erétil"
-      - "disfuncao eretil"
-    keywords:
-      - "urologista"
-      - "urologia"
-      - "ardor ao urinar"
-      - "dor ao urinar"
-      - "queimação ao urinar"
-      - "queimacao ao urinar"
-      - "infecção urinária"
-      - "infeccao urinaria"
-      - "cistite"
-      - "sangue na urina"
-      - "cálculo renal"
-      - "calculo renal"
-      - "pedra no rim"
-      - "próstata"
-      - "prostata"
-      - "urinar muito"
-      - "urinar toda hora"
-      - "vontade frequente de urinar"
-      - "jato fraco"
-      - "dor na virilha"
-      - "dor pélvica"
-      - "dor pelvica"
-      - "disfunção erétil"
-      - "disfuncao eretil"
-
-  - name: "Reprodução Humana"
-    confidence: 0.78
-    confidence_reason: "Termos de fertilidade/gestação planejada costumam ser bem direcionadores."
-    strong_keywords:
-      - "reprodução humana"
-      - "reproducao humana"
-      - "fertilidade"
-      - "infertilidade"
-      - "tentando engravidar"
-      - "não consigo engravidar"
-      - "nao consigo engravidar"
-      - "fiv"
-      - "fertilização in vitro"
-      - "fertilizacao in vitro"
-      - "inseminação artificial"
-      - "inseminacao artificial"
-      - "congelamento de óvulos"
-      - "congelamento de ovulos"
-    weak_keywords:
-      - "ovulação"
-      - "ovulacao"
-      - "ciclo irregular"
-      - "menstruação irregular"
-      - "menstruacao irregular"
-      - "planejamento para engravidar"
-      - "tratamento para engravidar"
-    keywords:
-      - "reprodução humana"
-      - "reproducao humana"
-      - "fertilidade"
-      - "infertilidade"
-      - "tentando engravidar"
-      - "não consigo engravidar"
-      - "nao consigo engravidar"
-      - "fiv"
-      - "fertilização in vitro"
-      - "fertilizacao in vitro"
-      - "inseminação artificial"
-      - "inseminacao artificial"
-      - "congelamento de óvulos"
-      - "congelamento de ovulos"
-      - "ovulação"
-      - "ovulacao"
-      - "ciclo irregular"
-      - "menstruação irregular"
-      - "menstruacao irregular"
-      - "planejamento para engravidar"
-      - "tratamento para engravidar"
-
-  # --- 0.76 / 0.75 / 0.74 ---
-  - name: "Mastologia"
-    confidence: 0.76
-    confidence_reason: "Termos relacionados a mama costumam direcionar bem."
-    strong_keywords:
-      - "mastologia"
-      - "mastologista"
-      - "nódulo na mama"
-      - "nodulo na mama"
-      - "caroço na mama"
-      - "caroco na mama"
-      - "mamografia alterada"
-      - "ultrassom da mama alterado"
-      - "secreção no mamilo"
-      - "secrecao no mamilo"
-      - "biópsia da mama"
-      - "biopsia da mama"
-    weak_keywords:
-      - "dor na mama"
-      - "mama inchada"
-      - "mama inflamada"
-      - "alteração no mamilo"
-      - "alteracao no mamilo"
-      - "cisto na mama"
-    keywords:
-      - "mastologia"
-      - "mastologista"
-      - "nódulo na mama"
-      - "nodulo na mama"
-      - "caroço na mama"
-      - "caroco na mama"
-      - "mamografia alterada"
-      - "ultrassom da mama alterado"
-      - "secreção no mamilo"
-      - "secrecao no mamilo"
-      - "biópsia da mama"
-      - "biopsia da mama"
-      - "dor na mama"
-      - "mama inchada"
-      - "mama inflamada"
-      - "alteração no mamilo"
-      - "alteracao no mamilo"
-      - "cisto na mama"
-
-  - name: "Cardiologia"
-    confidence: 0.75
-    confidence_reason: "Alguns termos são fortes, mas parte dos sintomas pode ser sistêmica/ambígua."
-    strong_keywords:
-      - "dor no peito"
-      - "palpitação"
-      - "palpitacao"
-      - "arritmia"
-      - "taquicardia"
-      - "falta de ar"
-      - "batimento acelerado"
-    weak_keywords:
-      - "pressão alta"
-      - "pressao alta"
-      - "hipertensão"
-      - "hipertensao"
-      - "colesterol alto"
-      - "cansaço"
-      - "cansaco"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-    keywords:
-      - "dor no peito"
-      - "palpitação"
-      - "palpitacao"
-      - "arritmia"
-      - "taquicardia"
-      - "falta de ar"
-      - "batimento acelerado"
-      - "pressão alta"
-      - "pressao alta"
-      - "hipertensão"
-      - "hipertensao"
-      - "colesterol alto"
-      - "cansaço"
-      - "cansaco"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-
-  - name: "Cirurgia Plástica"
-    confidence: 0.74
-    confidence_reason: "Termos estéticos/reconstrutivos tendem a ser bem específicos."
-    strong_keywords:
-      - "cirurgia plástica"
-      - "cirurgia plastica"
-      - "cirurgião plástico"
-      - "cirurgiao plastico"
-      - "rinoplastia"
-      - "lipoaspiração"
-      - "lipoaspiracao"
-      - "abdominoplastia"
-      - "blefaroplastia"
-      - "reconstrução"
-      - "reconstrucao"
-      - "cicatriz"
-    weak_keywords:
-      - "estética"
-      - "estetica"
-      - "correção"
-      - "correcao"
-      - "queimadura"
-      - "assimetria"
-      - "flacidez"
-    keywords:
-      - "cirurgia plástica"
-      - "cirurgia plastica"
-      - "cirurgião plástico"
-      - "cirurgiao plastico"
-      - "rinoplastia"
-      - "lipoaspiração"
-      - "lipoaspiracao"
-      - "abdominoplastia"
-      - "blefaroplastia"
-      - "reconstrução"
-      - "reconstrucao"
-      - "cicatriz"
-      - "estética"
-      - "estetica"
-      - "correção"
-      - "correcao"
-      - "queimadura"
-      - "assimetria"
-      - "flacidez"
-
-  - name: "Medicina Fetal"
-    confidence: 0.74
-    confidence_reason: "Contexto gestacional específico, geralmente relacionado a acompanhamento de gestação."
-    strong_keywords:
-      - "medicina fetal"
-      - "especialista em medicina fetal"
-      - "ultrassom morfológico"
-      - "ultrassom morfologico"
-      - "doppler obstétrico"
-      - "doppler obstetrico"
-      - "translucência nucal"
-      - "translucencia nucal"
-      - "malformação fetal"
-      - "malformacao fetal"
-      - "gestação de alto risco"
-      - "gestacao de alto risco"
-    weak_keywords:
-      - "ultrassom da gravidez"
-      - "ultrassom gestacional"
-      - "exame do bebê"
-      - "exame do bebe"
-      - "alteração no ultrassom"
-      - "alteracao no ultrassom"
-      - "acompanhamento da gestação"
-      - "acompanhamento da gestacao"
-    keywords:
-      - "medicina fetal"
-      - "especialista em medicina fetal"
-      - "ultrassom morfológico"
-      - "ultrassom morfologico"
-      - "doppler obstétrico"
-      - "doppler obstetrico"
-      - "translucência nucal"
-      - "translucencia nucal"
-      - "malformação fetal"
-      - "malformacao fetal"
-      - "gestação de alto risco"
-      - "gestacao de alto risco"
-      - "ultrassom da gravidez"
-      - "ultrassom gestacional"
-      - "exame do bebê"
-      - "exame do bebe"
-      - "alteração no ultrassom"
-      - "alteracao no ultrassom"
-      - "acompanhamento da gestação"
-      - "acompanhamento da gestacao"
-
-  # --- 0.72 ---
-  - name: "Ortopedia e Traumatologia"
-    confidence: 0.72
-    confidence_reason: "Queixas musculoesqueléticas costumam ser localizadas, mas ainda variam em causa."
-    strong_keywords:
-      - "dor no joelho"
-      - "dor nas costas"
-      - "dor na coluna"
-      - "coluna"
-      - "fratura"
-      - "torção"
-      - "torcao"
-      - "entorse"
-      - "luxação"
-      - "luxacao"
-      - "hérnia de disco"
-      - "hernia de disco"
-    weak_keywords:
-      - "dor muscular"
-      - "tendinite"
-      - "lesão"
-      - "lesao"
-      - "ombro"
-      - "punho"
-      - "cotovelo"
-    keywords:
-      - "dor no joelho"
-      - "dor nas costas"
-      - "dor na coluna"
-      - "coluna"
-      - "fratura"
-      - "torção"
-      - "torcao"
-      - "entorse"
-      - "luxação"
-      - "luxacao"
-      - "hérnia de disco"
-      - "hernia de disco"
-      - "dor muscular"
-      - "tendinite"
-      - "lesão"
-      - "lesao"
-      - "ombro"
-      - "punho"
-      - "cotovelo"
-
-  - name: "Neurologia"
-    confidence: 0.72
-    confidence_reason: "Alguns termos são fortes, mas parte das queixas pode cruzar outras áreas."
-    strong_keywords:
-      - "neurologista"
-      - "enxaqueca"
-      - "convulsão"
-      - "convulsao"
-      - "formigamento"
-      - "tremor"
-      - "fraqueza"
-      - "desmaio"
-    weak_keywords:
-      - "dor de cabeça"
-      - "dor de cabeca"
-      - "tontura"
-      - "memória"
-      - "memoria"
-      - "insônia"
-      - "insonia"
-      - "dormência"
-      - "dormencia"
-    keywords:
-      - "neurologista"
-      - "enxaqueca"
-      - "convulsão"
-      - "convulsao"
-      - "formigamento"
-      - "tremor"
-      - "fraqueza"
-      - "desmaio"
-      - "dor de cabeça"
-      - "dor de cabeca"
-      - "tontura"
-      - "memória"
-      - "memoria"
-      - "insônia"
-      - "insonia"
-      - "dormência"
-      - "dormencia"
-
-  - name: "Endocrinologia e Metabologia"
-    confidence: 0.72
-    confidence_reason: "Termos metabólicos/hormonais podem ser fortes, mas muitas queixas são inespecíficas."
-    strong_keywords:
-      - "endocrinologista"
-      - "endocrino"
-      - "diabetes"
-      - "glicose alta"
-      - "açúcar alto"
-      - "acucar alto"
-      - "insulina"
-      - "hemoglobina glicada"
-      - "tireoide"
-      - "tireóide"
-      - "hipotireoidismo"
-      - "hipertireoidismo"
-      - "hashimoto"
-      - "tsh"
-    weak_keywords:
-      - "engordando"
-      - "emagrecendo"
-      - "ganho de peso"
-      - "perda de peso"
-      - "metabolismo"
-      - "colesterol"
-      - "triglicerídeos"
-      - "triglicerideos"
-      - "cansaço"
-      - "cansaco"
-    keywords:
-      - "endocrinologista"
-      - "endocrino"
-      - "diabetes"
-      - "glicose alta"
-      - "açúcar alto"
-      - "acucar alto"
-      - "insulina"
-      - "hemoglobina glicada"
-      - "tireoide"
-      - "tireóide"
-      - "hipotireoidismo"
-      - "hipertireoidismo"
-      - "hashimoto"
-      - "tsh"
-      - "engordando"
-      - "emagrecendo"
-      - "ganho de peso"
-      - "perda de peso"
-      - "metabolismo"
-      - "colesterol"
-      - "triglicerídeos"
-      - "triglicerideos"
-      - "cansaço"
-      - "cansaco"
-
-  - name: "Coloproctologia"
-    confidence: 0.72
-    confidence_reason: "Alguns termos são específicos e direcionadores, apesar de sensibilidade no relato."
-    strong_keywords:
-      - "coloproctologia"
-      - "coloproctologista"
-      - "proctologista"
-      - "hemorroida"
-      - "fissura anal"
-      - "fístula"
-      - "fistula"
-      - "sangramento ao evacuar"
-      - "dor ao evacuar"
-      - "coceira anal"
-    weak_keywords:
-      - "dor anal"
-      - "prurido anal"
-      - "prisão de ventre"
-      - "prisao de ventre"
-      - "diarreia frequente"
-      - "dor ao sentar"
-    keywords:
-      - "coloproctologia"
-      - "coloproctologista"
-      - "proctologista"
-      - "hemorroida"
-      - "fissura anal"
-      - "fístula"
-      - "fistula"
-      - "sangramento ao evacuar"
-      - "dor ao evacuar"
-      - "coceira anal"
-      - "dor anal"
-      - "prurido anal"
-      - "prisão de ventre"
-      - "prisao de ventre"
-      - "diarreia frequente"
-      - "dor ao sentar"
-
-  # --- 0.70 ---
-  - name: "Dermatologia"
-    confidence: 0.70
-    confidence_reason: "Queixas de pele são comuns, mas muitos termos são subjetivos e ambíguos."
-    strong_keywords:
-      - "mancha na pele"
-      - "lesão na pele"
-      - "lesao na pele"
-      - "coceira"
-      - "urticária"
-      - "urticaria"
-      - "acne"
-      - "espinhas"
-      - "micose"
-      - "queda de cabelo"
-    weak_keywords:
-      - "vermelhidão"
-      - "vermelhidao"
-      - "alergia na pele"
-      - "pele ressecada"
-      - "pele seca"
-      - "irritação"
-      - "irritacao"
-    keywords:
-      - "mancha na pele"
-      - "lesão na pele"
-      - "lesao na pele"
-      - "coceira"
-      - "urticária"
-      - "urticaria"
-      - "acne"
-      - "espinhas"
-      - "micose"
-      - "queda de cabelo"
-      - "vermelhidão"
-      - "vermelhidao"
-      - "alergia na pele"
-      - "pele ressecada"
-      - "pele seca"
-      - "irritação"
-      - "irritacao"
-
-  - name: "Psiquiatria"
-    confidence: 0.70
-    confidence_reason: "Linguagem pode ser específica, mas sintomas são frequentemente transversais."
-    strong_keywords:
-      - "psiquiatra"
-      - "psiquiatria"
-      - "ansiedade"
-      - "crise de ansiedade"
-      - "crise de pânico"
-      - "crise de panico"
-      - "pânico"
-      - "panico"
-      - "depressão"
-      - "depressao"
-      - "transtorno bipolar"
-      - "bipolaridade"
-      - "toc"
-      - "transtorno obsessivo compulsivo"
-      - "esquizofrenia"
-    weak_keywords:
-      - "insônia"
-      - "insonia"
-      - "estresse"
-      - "stress"
-      - "humor"
-      - "irritabilidade"
-      - "falta de concentração"
-      - "falta de concentracao"
-      - "ataque de nervos"
-    keywords:
-      - "psiquiatra"
-      - "psiquiatria"
-      - "ansiedade"
-      - "crise de ansiedade"
-      - "crise de pânico"
-      - "crise de panico"
-      - "pânico"
-      - "panico"
-      - "depressão"
-      - "depressao"
-      - "transtorno bipolar"
-      - "bipolaridade"
-      - "toc"
-      - "transtorno obsessivo compulsivo"
-      - "esquizofrenia"
-      - "insônia"
-      - "insonia"
-      - "estresse"
-      - "stress"
-      - "humor"
-      - "irritabilidade"
-      - "falta de concentração"
-      - "falta de concentracao"
-      - "ataque de nervos"
-
-  - name: "Gastroenterologia"
-    confidence: 0.70
-    confidence_reason: "Sintomas GI são comuns e parcialmente difusos, apesar de termos fortes existirem."
-    strong_keywords:
-      - "gastroenterologista"
-      - "gastro"
-      - "azia"
-      - "refluxo"
-      - "gastrite"
-      - "úlcera"
-      - "ulcera"
-      - "dor abdominal"
-      - "dor na barriga"
-      - "intestino"
-      - "síndrome do intestino irritável"
-      - "sindrome do intestino irritavel"
-    weak_keywords:
-      - "náusea"
-      - "nausea"
-      - "vômito"
-      - "vomito"
-      - "diarreia"
-      - "constipação"
-      - "constipacao"
-      - "prisão de ventre"
-      - "prisao de ventre"
-      - "gases"
-      - "estufamento"
-    keywords:
-      - "gastroenterologista"
-      - "gastro"
-      - "azia"
-      - "refluxo"
-      - "gastrite"
-      - "úlcera"
-      - "ulcera"
-      - "dor abdominal"
-      - "dor na barriga"
-      - "intestino"
-      - "síndrome do intestino irritável"
-      - "sindrome do intestino irritavel"
-      - "náusea"
-      - "nausea"
-      - "vômito"
-      - "vomito"
-      - "diarreia"
-      - "constipação"
-      - "constipacao"
-      - "prisão de ventre"
-      - "prisao de ventre"
-      - "gases"
-      - "estufamento"
-
-  - name: "Pneumologia"
-    confidence: 0.70
-    confidence_reason: "Termos respiratórios ajudam, mas parte das queixas é sistêmica."
-    strong_keywords:
-      - "pneumologista"
-      - "pneumo"
-      - "asma"
-      - "bronquite"
-      - "chiado no peito"
-      - "chiado"
-      - "falta de ar ao respirar"
-      - "tosse crônica"
-      - "tosse cronica"
-      - "dpoc"
-    weak_keywords:
-      - "falta de ar"
-      - "tosse"
-      - "catarro"
-      - "dor ao respirar"
-      - "aperto no peito"
-      - "respiração curta"
-      - "respiracao curta"
-    keywords:
-      - "pneumologista"
-      - "pneumo"
-      - "asma"
-      - "bronquite"
-      - "chiado no peito"
-      - "chiado"
-      - "falta de ar ao respirar"
-      - "tosse crônica"
-      - "tosse cronica"
-      - "dpoc"
-      - "falta de ar"
-      - "tosse"
-      - "catarro"
-      - "dor ao respirar"
-      - "aperto no peito"
-      - "respiração curta"
-      - "respiracao curta"
-
-  - name: "Nefrologia"
-    confidence: 0.70
-    confidence_reason: "Termos renais podem ser específicos, mas usuários leigos nem sempre os usam."
-    strong_keywords:
-      - "nefrologista"
-      - "nefrologia"
-      - "rim"
-      - "rins"
-      - "insuficiência renal"
-      - "insuficiencia renal"
-      - "creatinina alta"
-      - "ureia alta"
-      - "hemodiálise"
-      - "hemodialise"
-      - "diálise"
-      - "dialise"
-      - "proteinúria"
-      - "proteinuria"
-    weak_keywords:
-      - "inchaço"
-      - "inchaco"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-      - "urina espumosa"
-      - "pressão alta"
-      - "pressao alta"
-      - "dor no rim"
-    keywords:
-      - "nefrologista"
-      - "nefrologia"
-      - "rim"
-      - "rins"
-      - "insuficiência renal"
-      - "insuficiencia renal"
-      - "creatinina alta"
-      - "ureia alta"
-      - "hemodiálise"
-      - "hemodialise"
-      - "diálise"
-      - "dialise"
-      - "proteinúria"
-      - "proteinuria"
-      - "inchaço"
-      - "inchaco"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-      - "urina espumosa"
-      - "pressão alta"
-      - "pressao alta"
-      - "dor no rim"
-
-  - name: "Alergia e Imunologia"
-    confidence: 0.70
-    confidence_reason: "Alguns termos são claros, porém muitos sintomas são compartilhados com outras áreas."
-    strong_keywords:
-      - "alergista"
-      - "alergologia"
-      - "alergia"
-      - "urticária"
-      - "urticaria"
-      - "angioedema"
-      - "anafilaxia"
-      - "teste alérgico"
-      - "teste alergico"
-      - "imunoterapia"
-      - "vacina para alergia"
-      - "rinite alérgica"
-      - "rinite alergica"
-    weak_keywords:
-      - "coceira"
-      - "espirros"
-      - "coriza"
-      - "nariz escorrendo"
-      - "olhos coçando"
-      - "olhos cocando"
-      - "alergia na pele"
-      - "chiado"
-    keywords:
-      - "alergista"
-      - "alergologia"
-      - "alergia"
-      - "urticária"
-      - "urticaria"
-      - "angioedema"
-      - "anafilaxia"
-      - "teste alérgico"
-      - "teste alergico"
-      - "imunoterapia"
-      - "vacina para alergia"
-      - "rinite alérgica"
-      - "rinite alergica"
-      - "coceira"
-      - "espirros"
-      - "coriza"
-      - "nariz escorrendo"
-      - "olhos coçando"
-      - "olhos cocando"
-      - "alergia na pele"
-      - "chiado"
-
-  - name: "Hematologia e Hemoterapia"
-    confidence: 0.70
-    confidence_reason: "Termos de sangue/hemograma podem ser específicos, mas nem sempre aparecem no relato livre."
-    strong_keywords:
-      - "hematologista"
-      - "hematologia"
-      - "anemia"
-      - "ferro baixo"
-      - "hemoglobina baixa"
-      - "leucemia"
-      - "linfoma"
-      - "plaquetas baixas"
-      - "plaquetas altas"
-      - "hemofilia"
-      - "distúrbio de coagulação"
-      - "disturbio de coagulacao"
-    weak_keywords:
-      - "hematócrito"
-      - "hematocrito"
-      - "hemograma"
-      - "sangramento fácil"
-      - "sangramento facil"
-      - "hematoma"
-      - "manchas roxas"
-      - "cansaço"
-      - "cansaco"
-      - "palidez"
-    keywords:
-      - "hematologista"
-      - "hematologia"
-      - "anemia"
-      - "ferro baixo"
-      - "hemoglobina baixa"
-      - "leucemia"
-      - "linfoma"
-      - "plaquetas baixas"
-      - "plaquetas altas"
-      - "hemofilia"
-      - "distúrbio de coagulação"
-      - "disturbio de coagulacao"
-      - "hematócrito"
-      - "hematocrito"
-      - "hemograma"
-      - "sangramento fácil"
-      - "sangramento facil"
-      - "hematoma"
-      - "manchas roxas"
-      - "cansaço"
-      - "cansaco"
-      - "palidez"
-
-  - name: "Oncologia Clínica"
-    confidence: 0.70
-    confidence_reason: "Termos podem ser específicos, mas dependem muito de contexto e histórico."
-    strong_keywords:
-      - "oncologista"
-      - "oncologia"
-      - "câncer"
-      - "cancer"
-      - "tumor"
-      - "neoplasia"
-      - "quimioterapia"
-      - "imunoterapia"
-      - "metástase"
-      - "metastase"
-      - "biópsia"
-      - "biopsia"
-    weak_keywords:
-      - "nódulo"
-      - "nodulo"
-      - "caroço"
-      - "caroco"
-      - "perda de peso"
-      - "emagrecimento"
-      - "cansaço"
-      - "cansaco"
-      - "linfonodo"
-      - "íngua"
-      - "ingua"
-    keywords:
-      - "oncologista"
-      - "oncologia"
-      - "câncer"
-      - "cancer"
-      - "tumor"
-      - "neoplasia"
-      - "quimioterapia"
-      - "imunoterapia"
-      - "metástase"
-      - "metastase"
-      - "biópsia"
-      - "biopsia"
-      - "nódulo"
-      - "nodulo"
-      - "caroço"
-      - "caroco"
-      - "perda de peso"
-      - "emagrecimento"
-      - "cansaço"
-      - "cansaco"
-      - "linfonodo"
-      - "íngua"
-      - "ingua"
-
-  - name: "Angiologia"
-    confidence: 0.70
-    confidence_reason: "Alguns termos vasculares são relativamente específicos."
-    strong_keywords:
-      - "angiologia"
-      - "angiologista"
-      - "varizes"
-      - "vasinhos"
-      - "trombose"
-      - "dor e inchaço na perna"
-      - "dor e inchaco na perna"
-      - "má circulação"
-      - "ma circulacao"
-      - "claudicação"
-      - "claudicacao"
-    weak_keywords:
-      - "perna inchada"
-      - "pernas inchadas"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-      - "dor na perna"
-      - "formigamento na perna"
-      - "câimbra"
-      - "cãibra"
-      - "caibra"
-    keywords:
-      - "angiologia"
-      - "angiologista"
-      - "varizes"
-      - "vasinhos"
-      - "trombose"
-      - "dor e inchaço na perna"
-      - "dor e inchaco na perna"
-      - "má circulação"
-      - "ma circulacao"
-      - "claudicação"
-      - "claudicacao"
-      - "perna inchada"
-      - "pernas inchadas"
-      - "inchaço nas pernas"
-      - "inchaco nas pernas"
-      - "dor na perna"
-      - "formigamento na perna"
-      - "câimbra"
-      - "cãibra"
-      - "caibra"
-
-  # --- 0.68 ---
-  - name: "Reumatologia"
-    confidence: 0.68
-    confidence_reason: "Sintomas (dor/articulações) são frequentes e podem cruzar outras áreas."
-    strong_keywords:
-      - "reumatologista"
-      - "reumatologia"
-      - "artrite"
-      - "artrite reumatoide"
-      - "lúpus"
-      - "lupus"
-      - "gota"
-      - "fibromialgia"
-      - "dor nas articulações"
-      - "dor nas articulacoes"
-      - "inchaço nas articulações"
-      - "inchaco nas articulacoes"
-    weak_keywords:
-      - "dor articular"
-      - "rigidez"
-      - "rigidez de manhã"
-      - "rigidez de manha"
-      - "dor no corpo"
-      - "dor crônica"
-      - "dor cronica"
-      - "inflamação"
-      - "inflamacao"
-    keywords:
-      - "reumatologista"
-      - "reumatologia"
-      - "artrite"
-      - "artrite reumatoide"
-      - "lúpus"
-      - "lupus"
-      - "gota"
-      - "fibromialgia"
-      - "dor nas articulações"
-      - "dor nas articulacoes"
-      - "inchaço nas articulações"
-      - "inchaco nas articulacoes"
-      - "dor articular"
-      - "rigidez"
-      - "rigidez de manhã"
-      - "rigidez de manha"
-      - "dor no corpo"
-      - "dor crônica"
-      - "dor cronica"
-      - "inflamação"
-      - "inflamacao"
-
-  - name: "Infectologia"
-    confidence: 0.68
-    confidence_reason: "Muitos sinais são gerais; termos específicos variam bastante."
-    strong_keywords:
-      - "infectologista"
-      - "infectologia"
-      - "hiv"
-      - "aids"
-      - "hepatite"
-      - "tuberculose"
-      - "dengue"
-      - "zika"
-      - "chikungunya"
-      - "mononucleose"
-      - "infecção recorrente"
-      - "infeccao recorrente"
-    weak_keywords:
-      - "febre prolongada"
-      - "febre persistente"
-      - "infecção"
-      - "infeccao"
-      - "calafrios"
-      - "ínguas"
-      - "inguas"
-      - "dor no corpo"
-      - "mal-estar"
-      - "mal estar"
-    keywords:
-      - "infectologista"
-      - "infectologia"
-      - "hiv"
-      - "aids"
-      - "hepatite"
-      - "tuberculose"
-      - "dengue"
-      - "zika"
-      - "chikungunya"
-      - "mononucleose"
-      - "infecção recorrente"
-      - "infeccao recorrente"
-      - "febre prolongada"
-      - "febre persistente"
-      - "infecção"
-      - "infeccao"
-      - "calafrios"
-      - "ínguas"
-      - "inguas"
-      - "dor no corpo"
-      - "mal-estar"
-      - "mal estar"
-
-  - name: "Genética Médica"
-    confidence: 0.68
-    confidence_reason: "Pode ser específica (história familiar/síndromes), mas relato livre varia."
-    strong_keywords:
-      - "genética médica"
-      - "genetica medica"
-      - "geneticista"
-      - "teste genético"
-      - "teste genetico"
-      - "painel genético"
-      - "painel genetico"
-      - "cariótipo"
-      - "cariotipo"
-      - "mutação"
-      - "mutacao"
-      - "síndrome genética"
-      - "sindrome genetica"
-      - "doença hereditária"
-      - "doenca hereditaria"
-    weak_keywords:
-      - "histórico familiar"
-      - "historico familiar"
-      - "doença rara"
-      - "doenca rara"
-      - "malformação"
-      - "malformacao"
-      - "aconselhamento genético"
-      - "aconselhamento genetico"
-    keywords:
-      - "genética médica"
-      - "genetica medica"
-      - "geneticista"
-      - "teste genético"
-      - "teste genetico"
-      - "painel genético"
-      - "painel genetico"
-      - "cariótipo"
-      - "cariotipo"
-      - "mutação"
-      - "mutacao"
-      - "síndrome genética"
-      - "sindrome genetica"
-      - "doença hereditária"
-      - "doenca hereditaria"
-      - "histórico familiar"
-      - "historico familiar"
-      - "doença rara"
-      - "doenca rara"
-      - "malformação"
-      - "malformacao"
-      - "aconselhamento genético"
-      - "aconselhamento genetico"
-
-  # --- 0.66 ---
-  - name: "Medicina do Trabalho"
-    confidence: 0.66
-    confidence_reason: "Contexto ocupacional ajuda a direcionar (ex.: exames e vínculo ao trabalho)."
-    strong_keywords:
-      - "medicina do trabalho"
-      - "médico do trabalho"
-      - "medico do trabalho"
-      - "exame admissional"
-      - "exame demissional"
-      - "exame periódico"
-      - "exame periodico"
-      - "aso"
-      - "cat"
-      - "acidente de trabalho"
-    weak_keywords:
-      - "afastamento"
-      - "inss"
-      - "doença ocupacional"
-      - "doenca ocupacional"
-      - "ergonomia"
-    keywords:
-      - "medicina do trabalho"
-      - "médico do trabalho"
-      - "medico do trabalho"
-      - "exame admissional"
-      - "exame demissional"
-      - "exame periódico"
-      - "exame periodico"
-      - "aso"
-      - "cat"
-      - "acidente de trabalho"
-      - "afastamento"
-      - "inss"
-      - "doença ocupacional"
-      - "doenca ocupacional"
-      - "ergonomia"
-
-  - name: "Medicina do Esporte"
-    confidence: 0.66
-    confidence_reason: "Contexto de atividade física/treino pode direcionar, mas sintomas cruzam ortopedia/fisio."
-    strong_keywords:
-      - "medicina do esporte"
-      - "médico do esporte"
-      - "medico do esporte"
-      - "lesão esportiva"
-      - "lesao esportiva"
-      - "retorno ao esporte"
-      - "atleta"
-    weak_keywords:
-      - "treino"
-      - "corrida"
-      - "academia"
-      - "dor após treino"
-      - "dor apos treino"
-    keywords:
-      - "medicina do esporte"
-      - "médico do esporte"
-      - "medico do esporte"
-      - "lesão esportiva"
-      - "lesao esportiva"
-      - "retorno ao esporte"
-      - "atleta"
-      - "treino"
-      - "corrida"
-      - "academia"
-      - "dor após treino"
-      - "dor apos treino"
-
-  - name: "Neonatologia"
-    confidence: 0.66
-    confidence_reason: "Faixa etária extremamente específica, mas costuma surgir por contexto (recém-nascido)."
-    strong_keywords:
-      - "neonatologia"
-      - "neonatologista"
-      - "uti neonatal"
-      - "recém-nascido"
-      - "recem-nascido"
-      - "prematuro"
-    weak_keywords:
-      - "amamentação"
-      - "amamentacao"
-      - "dificuldade para mamar"
-    keywords:
-      - "neonatologia"
-      - "neonatologista"
-      - "uti neonatal"
-      - "recém-nascido"
-      - "recem-nascido"
-      - "prematuro"
-      - "amamentação"
-      - "amamentacao"
-      - "dificuldade para mamar"
-
-  - name: "Cardiologia Pediátrica"
-    confidence: 0.66
-    confidence_reason: "Subespecialidade; precisa de contexto pediátrico + termos cardíacos."
-    strong_keywords:
-      - "cardiologia pediátrica"
-      - "cardiologia pediatrica"
-      - "cardiologista pediátrico"
-      - "cardiologista pediatrico"
-      - "cardiopatia congênita"
-      - "cardiopatia congenita"
-      - "sopro no coração do bebê"
-      - "sopro no coracao do bebe"
-    weak_keywords:
-      - "cansaço ao mamar"
-      - "cansaco ao mamar"
-      - "falta de ar na criança"
-      - "falta de ar na crianca"
-    keywords:
-      - "cardiologia pediátrica"
-      - "cardiologia pediatrica"
-      - "cardiologista pediátrico"
-      - "cardiologista pediatrico"
-      - "cardiopatia congênita"
-      - "cardiopatia congenita"
-      - "sopro no coração do bebê"
-      - "sopro no coracao do bebe"
-      - "cansaço ao mamar"
-      - "cansaco ao mamar"
-      - "falta de ar na criança"
-      - "falta de ar na crianca"
-
-  - name: "Nefrologia Pediátrica"
-    confidence: 0.66
-    confidence_reason: "Subespecialidade; precisa de contexto pediátrico + termos renais/urinários."
-    strong_keywords:
-      - "nefrologia pediátrica"
-      - "nefrologia pediatrica"
-      - "rim na criança"
-      - "rim na crianca"
-      - "infecção urinária recorrente em criança"
-      - "infeccao urinaria recorrente em crianca"
-    weak_keywords:
-      - "urina espumosa na criança"
-      - "urina espumosa na crianca"
-      - "inchaço na criança"
-      - "inchaco na crianca"
-    keywords:
-      - "nefrologia pediátrica"
-      - "nefrologia pediatrica"
-      - "rim na criança"
-      - "rim na crianca"
-      - "infecção urinária recorrente em criança"
-      - "infeccao urinaria recorrente em crianca"
-      - "urina espumosa na criança"
-      - "urina espumosa na crianca"
-      - "inchaço na criança"
-      - "inchaco na crianca"
-
-  - name: "Nutrologia"
-    confidence: 0.66
-    confidence_reason: "Termos de composição corporal/dieta podem direcionar, mas cruzam endocrino e clínica."
-    strong_keywords:
-      - "nutrologia"
-      - "nutrologista"
-      - "deficiência nutricional"
-      - "deficiencia nutricional"
-      - "suplementação"
-      - "suplementacao"
-    weak_keywords:
-      - "dieta"
-      - "reeducação alimentar"
-      - "reeducacao alimentar"
-      - "ganho de peso"
-      - "perda de peso"
-    keywords:
-      - "nutrologia"
-      - "nutrologista"
-      - "deficiência nutricional"
-      - "deficiencia nutricional"
-      - "suplementação"
-      - "suplementacao"
-      - "dieta"
-      - "reeducação alimentar"
-      - "reeducacao alimentar"
-      - "ganho de peso"
-      - "perda de peso"
-
-  - name: "Cirurgia Vascular"
-    confidence: 0.66
-    confidence_reason: "Mais associada a procedimento; termos do usuário nem sempre apontam direto."
-    strong_keywords:
-      - "cirurgia vascular"
-      - "cirurgião vascular"
-      - "cirurgiao vascular"
-      - "cirurgia de varizes"
-      - "operar varizes"
-    weak_keywords:
-      - "tratamento de varizes"
-      - "ferida na perna"
-      - "úlcera na perna"
-      - "ulcera na perna"
-    keywords:
-      - "cirurgia vascular"
-      - "cirurgião vascular"
-      - "cirurgiao vascular"
-      - "cirurgia de varizes"
-      - "operar varizes"
-      - "tratamento de varizes"
-      - "ferida na perna"
-      - "úlcera na perna"
-      - "ulcera na perna"
-
-  - name: "Cirurgia Cardiovascular"
-    confidence: 0.66
-    confidence_reason: "Muito de procedimento; geralmente surge por contexto de doença já investigada."
-    strong_keywords:
-      - "cirurgia cardiovascular"
-      - "cirurgia cardíaca"
-      - "cirurgia cardiaca"
-      - "ponte de safena"
-      - "troca de válvula"
-      - "troca de valvula"
-    weak_keywords:
-      - "angioplastia"
-      - "stent"
-      - "cateterismo"
-    keywords:
-      - "cirurgia cardiovascular"
-      - "cirurgia cardíaca"
-      - "cirurgia cardiaca"
-      - "ponte de safena"
-      - "troca de válvula"
-      - "troca de valvula"
-      - "angioplastia"
-      - "stent"
-      - "cateterismo"
-
-  - name: "Neurocirurgia"
-    confidence: 0.66
-    confidence_reason: "Procedimento/encaminhamento; relato livre costuma cair primeiro em neurologia."
-    strong_keywords:
-      - "neurocirurgia"
-      - "neurocirurgião"
-      - "neurocirurgiao"
-      - "cirurgia do cérebro"
-      - "cirurgia do cerebro"
-      - "cirurgia de coluna"
-    weak_keywords:
-      - "compressão do nervo"
-      - "compressao do nervo"
-      - "dor irradiando"
-    keywords:
-      - "neurocirurgia"
-      - "neurocirurgião"
-      - "neurocirurgiao"
-      - "cirurgia do cérebro"
-      - "cirurgia do cerebro"
-      - "cirurgia de coluna"
-      - "compressão do nervo"
-      - "compressao do nervo"
-      - "dor irradiando"
-
-  - name: "Medicina do Sono"
-    confidence: 0.66
-    confidence_reason: "Queixas de sono são comuns, mas podem cruzar psiquiatria/neuro/pneumo."
-    strong_keywords:
-      - "medicina do sono"
-      - "polissonografia"
-      - "apneia do sono"
-      - "apneia"
-      - "ronco"
-      - "narcolepsia"
-    weak_keywords:
-      - "insônia"
-      - "insonia"
-      - "sonolência diurna"
-      - "sonolencia diurna"
-    keywords:
-      - "medicina do sono"
-      - "polissonografia"
-      - "apneia do sono"
-      - "apneia"
-      - "ronco"
-      - "narcolepsia"
-      - "insônia"
-      - "insonia"
-      - "sonolência diurna"
-      - "sonolencia diurna"
-
-  # --- 0.65 / 0.64 ---
-  - name: "Geriatria"
-    confidence: 0.65
-    confidence_reason: "Fortemente ligada a faixa etária, mas queixas são amplas/múltiplas."
-    strong_keywords:
-      - "geriatria"
-      - "geriatra"
-      - "idoso"
-      - "idosa"
-      - "terceira idade"
-    weak_keywords:
-      - "quedas"
-      - "polifarmácia"
-      - "polifarmacia"
-      - "fragilidade"
-    keywords:
-      - "geriatria"
-      - "geriatra"
-      - "idoso"
-      - "idosa"
-      - "terceira idade"
-      - "quedas"
-      - "polifarmácia"
-      - "polifarmacia"
-      - "fragilidade"
-
-  - name: "Medicina Física e Reabilitação (Fisiatria)"
-    confidence: 0.64
-    confidence_reason: "Relacionada a reabilitação/funcionalidade; termos podem ser menos diretos no relato."
-    strong_keywords:
-      - "fisiatria"
-      - "fisiatra"
-      - "reabilitação"
-      - "reabilitacao"
-      - "reabilitação motora"
-      - "reabilitacao motora"
-    weak_keywords:
-      - "fisioterapia"
-      - "limitação de movimento"
-      - "limitacao de movimento"
-      - "dor crônica"
-      - "dor cronica"
-    keywords:
-      - "fisiatria"
-      - "fisiatra"
-      - "reabilitação"
-      - "reabilitacao"
-      - "reabilitação motora"
-      - "reabilitacao motora"
-      - "fisioterapia"
-      - "limitação de movimento"
-      - "limitacao de movimento"
-      - "dor crônica"
-      - "dor cronica"
-
-  - name: "Cirurgia Torácica"
-    confidence: 0.64
-    confidence_reason: "Encaminhamento mais especializado; queixas iniciais podem ir para cardio/pneumo."
-    strong_keywords:
-      - "cirurgia torácica"
-      - "cirurgia toracica"
-      - "cirurgião torácico"
-      - "cirurgiao toracico"
-      - "pneumotórax"
-      - "pneumotorax"
-    weak_keywords:
-      - "nódulo no pulmão"
-      - "nodulo no pulmao"
-      - "pleura"
-    keywords:
-      - "cirurgia torácica"
-      - "cirurgia toracica"
-      - "cirurgião torácico"
-      - "cirurgiao toracico"
-      - "pneumotórax"
-      - "pneumotorax"
-      - "nódulo no pulmão"
-      - "nodulo no pulmao"
-      - "pleura"
-
-  - name: "Cirurgia do Aparelho Digestivo"
-    confidence: 0.64
-    confidence_reason: "Geralmente surge após investigação gastro; é mais de procedimento."
-    strong_keywords:
-      - "cirurgia digestiva"
-      - "cirurgia do aparelho digestivo"
-      - "cirurgia bariátrica"
-      - "cirurgia bariatrica"
-      - "bariátrica"
-      - "bariatrica"
-    weak_keywords:
-      - "hérnia de hiato"
-      - "hernia de hiato"
-      - "refluxo cirurgia"
-    keywords:
-      - "cirurgia digestiva"
-      - "cirurgia do aparelho digestivo"
-      - "cirurgia bariátrica"
-      - "cirurgia bariatrica"
-      - "bariátrica"
-      - "bariatrica"
-      - "hérnia de hiato"
-      - "hernia de hiato"
-      - "refluxo cirurgia"
-
-  - name: "Cirurgia de Cabeça e Pescoço"
-    confidence: 0.64
-    confidence_reason: "Especializada e frequentemente pós-triagem; termos do usuário variam."
-    strong_keywords:
-      - "cirurgia de cabeça e pescoço"
-      - "cirurgia cabeca e pescoco"
-      - "nódulo no pescoço"
-      - "nodulo no pescoco"
-      - "tireoide nódulo"
-      - "tireoide nodulo"
-    weak_keywords:
-      - "rouquidão persistente"
-      - "rouquidao persistente"
-      - "caroço no pescoço"
-      - "caroco no pescoco"
-    keywords:
-      - "cirurgia de cabeça e pescoço"
-      - "cirurgia cabeca e pescoco"
-      - "nódulo no pescoço"
-      - "nodulo no pescoco"
-      - "tireoide nódulo"
-      - "tireoide nodulo"
-      - "rouquidão persistente"
-      - "rouquidao persistente"
-      - "caroço no pescoço"
-      - "caroco no pescoco"
-
-  # --- 0.62 ---
-  - name: "Radioterapia"
-    confidence: 0.62
-    confidence_reason: "Normalmente vem por contexto oncológico já estabelecido."
-    strong_keywords:
-      - "radioterapia"
-      - "braquiterapia"
-      - "acelerador linear"
-      - "planejamento de radioterapia"
-    weak_keywords:
-      - "tratamento oncológico"
-      - "tratamento oncologico"
-      - "quimioterapia"
-      - "tumor"
-    keywords:
-      - "radioterapia"
-      - "braquiterapia"
-      - "acelerador linear"
-      - "planejamento de radioterapia"
-      - "tratamento oncológico"
-      - "tratamento oncologico"
-      - "quimioterapia"
-      - "tumor"
-
-  - name: "Cirurgia Geral"
-    confidence: 0.62
-    confidence_reason: "Especialidade de procedimento; relato do usuário raramente aponta direto para 'cirurgia geral'."
-    strong_keywords:
-      - "cirurgia geral"
-      - "cirurgião geral"
-      - "cirurgiao geral"
-      - "apendicite"
-      - "hérnia"
-      - "hernia"
-      - "colecistectomia"
-    weak_keywords:
-      - "pré-operatório"
-      - "pre-operatorio"
-      - "pós-operatório"
-      - "pos-operatorio"
-      - "curativo"
-    keywords:
-      - "cirurgia geral"
-      - "cirurgião geral"
-      - "cirurgiao geral"
-      - "apendicite"
-      - "hérnia"
-      - "hernia"
-      - "colecistectomia"
-      - "pré-operatório"
-      - "pre-operatorio"
-      - "pós-operatório"
-      - "pos-operatorio"
-      - "curativo"
-
-  - name: "Cirurgia Pediátrica"
-    confidence: 0.62
-    confidence_reason: "Procedimento em faixa etária; em relato livre geralmente cai em pediatria primeiro."
-    strong_keywords:
-      - "cirurgia pediátrica"
-      - "cirurgia pediatrica"
-      - "cirurgião pediátrico"
-      - "cirurgiao pediatrico"
-      - "fimose"
-      - "hérnia inguinal criança"
-      - "hernia inguinal crianca"
-    weak_keywords:
-      - "cirurgia em criança"
-      - "cirurgia em crianca"
-      - "meu filho precisa operar"
-      - "minha filha precisa operar"
-    keywords:
-      - "cirurgia pediátrica"
-      - "cirurgia pediatrica"
-      - "cirurgião pediátrico"
-      - "cirurgiao pediatrico"
-      - "fimose"
-      - "hérnia inguinal criança"
-      - "hernia inguinal crianca"
-      - "cirurgia em criança"
-      - "cirurgia em crianca"
-      - "meu filho precisa operar"
-      - "minha filha precisa operar"
-
-  # --- 0.60 ---
-  - name: "Pediatria"
-    confidence: 0.60
-    confidence_reason: "Faixa etária específica ajuda, mas sintomas ainda podem ser difusos."
-    strong_keywords:
-      - "pediatra"
-      - "criança"
-      - "crianca"
-      - "bebê"
-      - "bebe"
-      - "recém-nascido"
-      - "recem-nascido"
-      - "meu filho"
-      - "minha filha"
-    weak_keywords:
-      - "vacina"
-      - "vacinas"
-      - "puericultura"
-      - "crescimento"
-    keywords:
-      - "pediatra"
-      - "criança"
-      - "crianca"
-      - "bebê"
-      - "bebe"
-      - "recém-nascido"
-      - "recem-nascido"
-      - "meu filho"
-      - "minha filha"
-      - "vacina"
-      - "vacinas"
-      - "puericultura"
-      - "crescimento"
-
-  - name: "Anestesiologia"
-    confidence: 0.60
-    confidence_reason: "Mais ligada a contexto de procedimento do que a sintomas do usuário."
-    strong_keywords:
-      - "anestesia"
-      - "anestesiologista"
-      - "anestesista"
-      - "sedação"
-      - "sedacao"
-      - "raquidiana"
-      - "peridural"
-    weak_keywords:
-      - "pré-anestésico"
-      - "pre-anestesico"
-      - "reação à anestesia"
-      - "reacao a anestesia"
-    keywords:
-      - "anestesia"
-      - "anestesiologista"
-      - "anestesista"
-      - "sedação"
-      - "sedacao"
-      - "raquidiana"
-      - "peridural"
-      - "pré-anestésico"
-      - "pre-anestesico"
-      - "reação à anestesia"
-      - "reacao a anestesia"
-
-  - name: "Radiologia e Diagnóstico por Imagem"
-    confidence: 0.60
-    confidence_reason: "Normalmente aparece como exame/serviço, não como queixa principal."
-    strong_keywords:
-      - "tomografia"
-      - "ressonância"
-      - "ressonancia"
-      - "ultrassom"
-      - "raio-x"
-      - "raio x"
-      - "laudo de imagem"
-    weak_keywords:
-      - "exame de imagem"
-      - "achado no exame"
-      - "alteração no exame"
-      - "alteracao no exame"
-    keywords:
-      - "tomografia"
-      - "ressonância"
-      - "ressonancia"
-      - "ultrassom"
-      - "raio-x"
-      - "raio x"
-      - "laudo de imagem"
-      - "exame de imagem"
-      - "achado no exame"
-      - "alteração no exame"
-      - "alteracao no exame"
-
-  - name: "Medicina Intensiva"
-    confidence: 0.60
-    confidence_reason: "Contexto de internação/UTI, não costuma ser pedido por sintoma específico."
-    strong_keywords:
-      - "uti"
-      - "cti"
-      - "intensivista"
-      - "ventilação mecânica"
-      - "ventilacao mecanica"
-      - "intubação"
-      - "intubacao"
-    weak_keywords:
-      - "paciente crítico"
-      - "paciente critico"
-      - "monitorização"
-      - "monitorizacao"
-    keywords:
-      - "uti"
-      - "cti"
-      - "intensivista"
-      - "ventilação mecânica"
-      - "ventilacao mecanica"
-      - "intubação"
-      - "intubacao"
-      - "paciente crítico"
-      - "paciente critico"
-      - "monitorização"
-      - "monitorizacao"
-
-  - name: "Medicina de Emergência"
-    confidence: 0.60
-    confidence_reason: "Contexto de pronto atendimento; linguagem de sintomas é ampla."
-    strong_keywords:
-      - "pronto socorro"
-      - "pronto-socorro"
-      - "pronto atendimento"
-      - "upa"
-      - "samu"
-      - "urgência"
-      - "urgencia"
-      - "emergência"
-      - "emergencia"
-    weak_keywords:
-      - "observação"
-      - "observacao"
-      - "fui ao pronto socorro"
-    keywords:
-      - "pronto socorro"
-      - "pronto-socorro"
-      - "pronto atendimento"
-      - "upa"
-      - "samu"
-      - "urgência"
-      - "urgencia"
-      - "emergência"
-      - "emergencia"
-      - "observação"
-      - "observacao"
-      - "fui ao pronto socorro"
-
-  - name: "Medicina Paliativa"
-    confidence: 0.60
-    confidence_reason: "Contexto de cuidado/qualidade de vida é amplo; termos do usuário variam."
-    strong_keywords:
-      - "cuidados paliativos"
-      - "medicina paliativa"
-      - "paliativista"
-      - "qualidade de vida"
-      - "controle de sintomas"
-    weak_keywords:
-      - "doença avançada"
-      - "doenca avancada"
-      - "cuidado domiciliar"
-      - "dor oncológica"
-      - "dor oncologica"
-    keywords:
-      - "cuidados paliativos"
-      - "medicina paliativa"
-      - "paliativista"
-      - "qualidade de vida"
-      - "controle de sintomas"
-      - "doença avançada"
-      - "doenca avancada"
-      - "cuidado domiciliar"
-      - "dor oncológica"
-      - "dor oncologica"
-
-  - name: "Endoscopia Digestiva"
-    confidence: 0.60
-    confidence_reason: "Mais serviço/procedimento do que especialidade citada por sintoma."
-    strong_keywords:
-      - "endoscopia"
-      - "gastroscopia"
-      - "colonoscopia"
-      - "endoscopia digestiva"
-      - "pólipo"
-      - "polipo"
-    weak_keywords:
-      - "preparo para colonoscopia"
-      - "preparo para endoscopia"
-      - "laudo da endoscopia"
-    keywords:
-      - "endoscopia"
-      - "gastroscopia"
-      - "colonoscopia"
-      - "endoscopia digestiva"
-      - "pólipo"
-      - "polipo"
-      - "preparo para colonoscopia"
-      - "preparo para endoscopia"
-      - "laudo da endoscopia"
-
-  - name: "Medicina Legal e Perícia Médica"
-    confidence: 0.60
-    confidence_reason: "Contexto pericial/jurídico é específico, mas não é queixa clínica típica."
-    strong_keywords:
-      - "perícia médica"
-      - "pericia medica"
-      - "perito médico"
-      - "perito medico"
-      - "laudo pericial"
-      - "inss"
-    weak_keywords:
-      - "afastamento"
-      - "auxílio-doença"
-      - "auxilio-doenca"
-      - "processo"
-    keywords:
-      - "perícia médica"
-      - "pericia medica"
-      - "perito médico"
-      - "perito medico"
-      - "laudo pericial"
-      - "inss"
-      - "afastamento"
-      - "auxílio-doença"
-      - "auxilio-doenca"
-      - "processo"
-
-  - name: "Medicina Nuclear"
-    confidence: 0.60
-    confidence_reason: "Geralmente aparece como exame/serviço; pouco citado no relato livre."
-    strong_keywords:
-      - "medicina nuclear"
-      - "cintilografia"
-      - "pet-ct"
-      - "pet ct"
-      - "spect"
-      - "iodo radioativo"
-    weak_keywords:
-      - "captação"
-      - "captacao"
-      - "laudo do pet"
-      - "exame radioativo"
-    keywords:
-      - "medicina nuclear"
-      - "cintilografia"
-      - "pet-ct"
-      - "pet ct"
-      - "spect"
-      - "iodo radioativo"
-      - "captação"
-      - "captacao"
-      - "laudo do pet"
-      - "exame radioativo"
-
-  # --- 0.58 ---
-  - name: "Medicina de Família e Comunidade"
-    confidence: 0.58
-    confidence_reason: "Porta de entrada longitudinal; linguagem geralmente ampla."
-    strong_keywords:
-      - "médico de família"
-      - "medico de familia"
-      - "medicina de família"
-      - "medicina de familia"
-      - "saúde da família"
-      - "saude da familia"
-    weak_keywords:
-      - "prevenção"
-      - "prevencao"
-      - "rotina"
-      - "posto de saúde"
-      - "posto de saude"
-    keywords:
-      - "médico de família"
-      - "medico de familia"
-      - "medicina de família"
-      - "medicina de familia"
-      - "saúde da família"
-      - "saude da familia"
-      - "prevenção"
-      - "prevencao"
-      - "rotina"
-      - "posto de saúde"
-      - "posto de saude"
-
-  - name: "Patologia"
-    confidence: 0.58
-    confidence_reason: "Em geral surge por contexto de biópsia/laudo, pouco citado em relato livre."
-    strong_keywords:
-      - "patologia"
-      - "patologista"
-      - "anatomopatológico"
-      - "anatomopatologico"
-      - "biópsia"
-      - "biopsia"
-    weak_keywords:
-      - "laudo anatomopatológico"
-      - "laudo anatomopatologico"
-      - "imuno-histoquímica"
-      - "imuno-histoquimica"
-    keywords:
-      - "patologia"
-      - "patologista"
-      - "anatomopatológico"
-      - "anatomopatologico"
-      - "biópsia"
-      - "biopsia"
-      - "laudo anatomopatológico"
-      - "laudo anatomopatologico"
-      - "imuno-histoquímica"
-      - "imuno-histoquimica"
-
-  - name: "Patologia Clínica / Medicina Laboratorial"
-    confidence: 0.58
-    confidence_reason: "Forte como serviço de laboratório; menos comum como 'especialidade' no relato do usuário."
-    strong_keywords:
-      - "medicina laboratorial"
-      - "patologia clínica"
-      - "patologia clinica"
-      - "hemograma"
-      - "exame de sangue"
-      - "exames de sangue"
-    weak_keywords:
-      - "resultado do exame"
-      - "jejum"
-      - "coleta"
-    keywords:
-      - "medicina laboratorial"
-      - "patologia clínica"
-      - "patologia clinica"
-      - "hemograma"
-      - "exame de sangue"
-      - "exames de sangue"
-      - "resultado do exame"
-      - "jejum"
-      - "coleta"
-
-  - name: "Medicina Preventiva e Social"
-    confidence: 0.58
-    confidence_reason: "Mais ligada a gestão/saúde pública; termos do usuário raramente apontam direto."
-    strong_keywords:
-      - "saúde pública"
-      - "saude publica"
-      - "epidemiologia"
-      - "medicina preventiva"
-    weak_keywords:
-      - "prevenção"
-      - "prevencao"
-      - "rastreamento"
-      - "campanha de vacinação"
-      - "campanha de vacinacao"
-    keywords:
-      - "saúde pública"
-      - "saude publica"
-      - "epidemiologia"
-      - "medicina preventiva"
-      - "prevenção"
-      - "prevencao"
-      - "rastreamento"
-      - "campanha de vacinação"
-      - "campanha de vacinacao"
-
-  # --- 0.55 ---
-  - name: "Clínica Médica"
-    confidence: 0.55
-    confidence_reason: "Porta de entrada; sintomas e descrições tendem a ser difusos."
-    strong_keywords:
-      - "check-up"
-      - "check up"
-      - "consulta geral"
-      - "clínico geral"
-      - "clinico geral"
-      - "exames de rotina"
-      - "consulta de rotina"
-      - "avaliação geral"
-      - "avaliacao geral"
-    weak_keywords:
-      - "cansaço"
-      - "cansaco"
-      - "mal-estar"
-      - "mal estar"
-      - "febre"
-      - "dor no corpo"
-    keywords:
-      - "check-up"
-      - "check up"
-      - "consulta geral"
-      - "clínico geral"
-      - "clinico geral"
-      - "exames de rotina"
-      - "consulta de rotina"
-      - "avaliação geral"
-      - "avaliacao geral"
-      - "cansaço"
-      - "cansaco"
-      - "mal-estar"
-      - "mal estar"
-      - "febre"
-      - "dor no corpo"
-=======
-version: 1
-specialties:
-  - name: "Cardiologia"
-    confidence: 0.75
-    keywords:
-      - "dor no peito"
-      - "pressão alta"
-      - "palpitação"
-      - "arritmia"
-      - "colesterol"
-      - "falta de ar"
-    why: "Termos associados a sintomas e condições cardiovasculares."
-    next_step: "Considere buscar avaliação com um(a) cardiologista para orientação."
-
-  - name: "Dermatologia"
-    confidence: 0.70
-    keywords:
-      - "lesão na pele"
-      - "mancha"
-      - "coceira"
-      - "alergia na pele"
-      - "eczema"
-      - "psoríase"
-    why: "Termos associados a queixas dermatológicas."
-    next_step: "Um(a) dermatologista pode orientar a avaliação adequada."
-
-  - name: "Ortopedia"
-    confidence: 0.70
-    keywords:
-      - "dor no joelho"
-      - "dor nas costas"
-      - "coluna"
-      - "torção"
-      - "fratura"
-      - "ombro"
-    why: "Termos associados a queixas musculoesqueléticas."
-    next_step: "Um(a) ortopedista pode ajudar a investigar a causa e orientar conduta."
-
-  - name: "Gastroenterologia"
-    confidence: 0.70
-    keywords:
-      - "dor abdominal"
-      - "azia"
-      - "refluxo"
-      - "diarreia"
-      - "constipação"
-      - "gastrite"
-    why: "Termos associados a sintomas gastrointestinais."
-    next_step: "Um(a) gastroenterologista pode orientar exames e tratamento."
->>>>>>> 847ab09fe56758bb3a31b4f230420f274ea5fa2d
-
-fallback:
-  name: "Clínica Médica"
+- name: Odontologia (Dentista)
+  confidence: 0.85
+  confidence_reason: Linguagem dentária é altamente específica (1:1) no relato do usuário.
+  strong_keywords:
+  - dentista
+  - odontologia
+  - dor no dente
+  - dor de dente
+  - dor nos dentes
+  - dor de dentes
+  - dente quebrado
+  - cárie
+  - carie
+  - canal
+  - gengiva inchada
+  - sangramento na gengiva
+  - abscesso
+  - dente doendo
+  - dor de dente forte
+  - siso
+  - siso inflamado
+  - gengiva sangrando
+  weak_keywords:
+  - sensibilidade no dente
+  - sensibilidade
+  - gengiva
+  - dente
+  - mau hálito
+  - mau halito
+  - sensibilidade ao frio
+  - sensibilidade ao quente
+  - dor ao mastigar
+- name: Oftalmologia
+  confidence: 0.82
+  confidence_reason: Linguagem ocular (visão/olho) é bastante específica.
+  strong_keywords:
+  - oftalmologista
+  - visão embaçada
+  - visao embacada
+  - olho vermelho
+  - dor no olho
+  - conjuntivite
+  - grau do óculos
+  - grau do oculos
+  - miopia
+  - astigmatismo
+  - catarata
+  - vista embaçada
+  - visao turva
+  - não enxergo direito
+  - nao enxergo direito
+  - terçol
+  - tercol
+  weak_keywords:
+  - coceira no olho
+  - lacrimejamento
+  - olho seco
+  - fotofobia
+  - sensibilidade à luz
+  - sensibilidade a luz
+  - vista cansada
+  - olhos cansados
+  - ardência no olho
+  - ardencia no olho
+- name: Obstetrícia
+  confidence: 0.8
+  confidence_reason: Contexto de gestação/parto costuma ser altamente específico.
+  strong_keywords:
+  - obstetrícia
+  - obstetricia
+  - obstetra
+  - pré-natal
+  - pre natal
+  - gestante
+  - gravidez
+  - grávida
+  - gravida
+  - trabalho de parto
+  - parto
+  - ultrassom obstétrico
+  - ultrassom obstetrico
+  - teste de gravidez positivo
+  - suspeita de gravidez
+  - estou grávida
+  - estou gravida
+  - sangramento na gravidez
+  weak_keywords:
+  - enjoo na gravidez
+  - nausea na gravidez
+  - dor pélvica na gravidez
+  - dor pelvica na gravidez
+  - contrações
+  - contracoes
+  - bolsa rompeu
+  - perda de líquido
+  - perda de liquido
+  - dor na barriga na gravidez
+  - dor abdominal na gravidez
+- name: Ginecologia e Obstetrícia
+  confidence: 0.78
+  confidence_reason: Termos relacionados a ciclo/gestação costumam ser bem direcionadores.
+  strong_keywords:
+  - ginecologista
+  - obstetra
+  - pré-natal
+  - pre natal
+  - gestante
+  - gravidez
+  - grávida
+  - gravida
+  - atraso menstrual
+  - menstruação
+  - menstruacao
+  - sangramento vaginal
+  - corrimento
+  - papanicolau
+  - preventivo
+  - diu
+  - anticoncepcional
+  - coceira vaginal
+  - dor na relação
+  - dor na relacao
+  - corrimento com cheiro
+  - sangramento fora do ciclo
+  weak_keywords:
+  - cólica
+  - colica
+  - tpm
+  - menopausa
+  - dor pélvica
+  - dor pelvica
+  - seca vaginal
+  - diminuição da libido
+  - diminuicao da libido
+- name: Otorrinolaringologia
+  confidence: 0.78
+  confidence_reason: Termos de ouvido/nariz/garganta são relativamente específicos.
+  strong_keywords:
+  - otorrino
+  - otorrinolaringologista
+  - dor de ouvido
+  - otite
+  - sinusite
+  - amigdalite
+  - garganta inflamada
+  - rouquidão
+  - rouquidao
+  - zumbido
+  - labirintite
+  - perda de audição
+  - perda de audicao
+  - nariz sangrando
+  - sangramento nasal
+  weak_keywords:
+  - nariz entupido
+  - coriza
+  - espirros
+  - alergia respiratória
+  - alergia respiratoria
+  - tontura
+  - dor de garganta
+  - dor facial
+  - pressão no rosto
+  - pressao no rosto
+- name: Urologia
+  confidence: 0.78
+  confidence_reason: Queixas urinárias costumam ser bem direcionadoras.
+  strong_keywords:
+  - urologista
+  - urologia
+  - ardor ao urinar
+  - dor ao urinar
+  - queimação ao urinar
+  - queimacao ao urinar
+  - infecção urinária
+  - infeccao urinaria
+  - cistite
+  - sangue na urina
+  - cálculo renal
+  - calculo renal
+  - pedra no rim
+  - próstata
+  - prostata
+  - urina com sangue
+  - dificuldade para urinar
+  - infecção urinária recorrente
+  - infeccao urinaria recorrente
+  weak_keywords:
+  - urinar muito
+  - urinar toda hora
+  - vontade frequente de urinar
+  - jato fraco
+  - dor na virilha
+  - dor pélvica
+  - dor pelvica
+  - disfunção erétil
+  - disfuncao eretil
+  - acordo para urinar
+  - acordo a noite para urinar
+  - dor lombar
+- name: Reprodução Humana
+  confidence: 0.78
+  confidence_reason: Termos de fertilidade/gestação planejada costumam ser bem direcionadores.
+  strong_keywords:
+  - reprodução humana
+  - reproducao humana
+  - fertilidade
+  - infertilidade
+  - tentando engravidar
+  - não consigo engravidar
+  - nao consigo engravidar
+  - fiv
+  - fertilização in vitro
+  - fertilizacao in vitro
+  - inseminação artificial
+  - inseminacao artificial
+  - congelamento de óvulos
+  - congelamento de ovulos
+  - tentando ter filho
+  - tentando ter bebê
+  - tentando ter bebe
+  - tratamento de fertilidade
+  weak_keywords:
+  - ovulação
+  - ovulacao
+  - ciclo irregular
+  - menstruação irregular
+  - menstruacao irregular
+  - planejamento para engravidar
+  - tratamento para engravidar
+  - dificuldade para engravidar
+- name: Mastologia
+  confidence: 0.76
+  confidence_reason: Termos relacionados a mama costumam direcionar bem.
+  strong_keywords:
+  - mastologia
+  - mastologista
+  - nódulo na mama
+  - nodulo na mama
+  - caroço na mama
+  - caroco na mama
+  - mamografia alterada
+  - ultrassom da mama alterado
+  - secreção no mamilo
+  - secrecao no mamilo
+  - biópsia da mama
+  - biopsia da mama
+  - caroço no seio
+  - caroco no seio
+  - secreção no seio
+  - secrecao no seio
+  weak_keywords:
+  - dor na mama
+  - mama inchada
+  - mama inflamada
+  - alteração no mamilo
+  - alteracao no mamilo
+  - cisto na mama
+  - sensibilidade na mama
+  - incômodo na mama
+  - incomodo na mama
+- name: Cardiologia
+  confidence: 0.75
+  confidence_reason: Alguns termos são fortes, mas parte dos sintomas pode ser sistêmica/ambígua.
+  strong_keywords:
+  - dor no peito
+  - palpitação
+  - palpitacao
+  - arritmia
+  - taquicardia
+  - falta de ar
+  - batimento acelerado
+  - aperto no peito
+  - pressão no peito
+  - pressao no peito
+  - coração acelerado
+  - coracao acelerado
+  weak_keywords:
+  - pressão alta
+  - pressao alta
+  - hipertensão
+  - hipertensao
+  - colesterol alto
+  - cansaço
+  - cansaco
+  - inchaço nas pernas
+  - inchaco nas pernas
+  - cansaço aos esforços
+  - cansaco aos esforcos
+  - tontura ao levantar
+- name: Cirurgia Plástica
+  confidence: 0.74
+  confidence_reason: Termos estéticos/reconstrutivos tendem a ser bem específicos.
+  strong_keywords:
+  - cirurgia plástica
+  - cirurgia plastica
+  - cirurgião plástico
+  - cirurgiao plastico
+  - rinoplastia
+  - lipoaspiração
+  - lipoaspiracao
+  - abdominoplastia
+  - blefaroplastia
+  - reconstrução
+  - reconstrucao
+  - cicatriz
+  - prótese de silicone
+  - protese de silicone
+  - implante de silicone
+  - redução de mama
+  - reducao de mama
+  weak_keywords:
+  - estética
+  - estetica
+  - correção
+  - correcao
+  - queimadura
+  - assimetria
+  - flacidez
+  - procedimento estético
+  - procedimento estetico
+- name: Medicina Fetal
+  confidence: 0.74
+  confidence_reason: Contexto gestacional específico, geralmente relacionado a acompanhamento de gestação.
+  strong_keywords:
+  - medicina fetal
+  - especialista em medicina fetal
+  - ultrassom morfológico
+  - ultrassom morfologico
+  - doppler obstétrico
+  - doppler obstetrico
+  - translucência nucal
+  - translucencia nucal
+  - malformação fetal
+  - malformacao fetal
+  - gestação de alto risco
+  - gestacao de alto risco
+  weak_keywords:
+  - ultrassom da gravidez
+  - ultrassom gestacional
+  - exame do bebê
+  - exame do bebe
+  - alteração no ultrassom
+  - alteracao no ultrassom
+  - acompanhamento da gestação
+  - acompanhamento da gestacao
+- name: Ortopedia e Traumatologia
+  confidence: 0.72
+  confidence_reason: Queixas musculoesqueléticas costumam ser localizadas, mas ainda variam em causa.
+  strong_keywords:
+  - dor no joelho
+  - dor nas costas
+  - dor na coluna
+  - coluna
+  - fratura
+  - torção
+  - torcao
+  - entorse
+  - luxação
+  - luxacao
+  - hérnia de disco
+  - hernia de disco
+  - dor no ombro
+  - dor no quadril
+  - torci o tornozelo
+  - torci o pé
+  - torci o pe
+  weak_keywords:
+  - dor muscular
+  - tendinite
+  - lesão
+  - lesao
+  - ombro
+  - punho
+  - cotovelo
+  - dor ao caminhar
+  - dor ao subir escadas
+- name: Neurologia
+  confidence: 0.72
+  confidence_reason: Alguns termos são fortes, mas parte das queixas pode cruzar outras áreas.
+  strong_keywords:
+  - neurologista
+  - enxaqueca
+  - convulsão
+  - convulsao
+  - formigamento
+  - tremor
+  - fraqueza
+  - desmaio
+  - avc
+  - derrame
+  - perdi a força
+  - perdi a forca
+  - formigamento nas mãos
+  - formigamento nas maos
+  weak_keywords:
+  - dor de cabeça
+  - dor de cabeca
+  - tontura
+  - memória
+  - memoria
+  - insônia
+  - insonia
+  - dormência
+  - dormencia
+  - confusão mental
+  - confusao mental
+  - esquecimento
+- name: Endocrinologia e Metabologia
+  confidence: 0.72
+  confidence_reason: Termos metabólicos/hormonais podem ser fortes, mas muitas queixas são inespecíficas.
+  strong_keywords:
+  - endocrinologista
+  - endocrino
+  - diabetes
+  - glicose alta
+  - açúcar alto
+  - acucar alto
+  - insulina
+  - hemoglobina glicada
+  - tireoide
+  - tireóide
+  - hipotireoidismo
+  - hipertireoidismo
+  - hashimoto
+  - tsh
+  - acima do peso
+  - sobrepeso
+  - obesidade
+  - quero emagrecer
+  - dificuldade para emagrecer
+  weak_keywords:
+  - engordando
+  - emagrecendo
+  - ganho de peso
+  - perda de peso
+  - metabolismo
+  - colesterol
+  - triglicerídeos
+  - triglicerideos
+  - cansaço
+  - cansaco
+  - muita fome
+  - fome excessiva
+  - compulsão alimentar
+  - compulsao alimentar
+- name: Coloproctologia
+  confidence: 0.72
+  confidence_reason: Alguns termos são específicos e direcionadores, apesar de sensibilidade no relato.
+  strong_keywords:
+  - coloproctologia
+  - coloproctologista
+  - proctologista
+  - hemorroida
+  - fissura anal
+  - fístula
+  - fistula
+  - sangramento ao evacuar
+  - dor ao evacuar
+  - coceira anal
+  weak_keywords:
+  - dor anal
+  - prurido anal
+  - prisão de ventre
+  - prisao de ventre
+  - diarreia frequente
+  - dor ao sentar
+- name: Dermatologia
+  confidence: 0.7
+  confidence_reason: Queixas de pele são comuns, mas muitos termos são subjetivos e ambíguos.
+  strong_keywords:
+  - mancha na pele
+  - lesão na pele
+  - lesao na pele
+  - coceira
+  - urticária
+  - urticaria
+  - acne
+  - espinhas
+  - micose
+  - queda de cabelo
+  - dermatite
+  - eczema
+  - psoríase
+  - psoriase
+  - pele descamando
+  weak_keywords:
+  - vermelhidão
+  - vermelhidao
+  - alergia na pele
+  - pele ressecada
+  - pele seca
+  - irritação
+  - irritacao
+  - pele irritada
+  - rash
+  - brotoeja
+- name: Psiquiatria
+  confidence: 0.7
+  confidence_reason: Linguagem pode ser específica, mas sintomas são frequentemente transversais.
+  strong_keywords:
+  - psiquiatra
+  - psiquiatria
+  - ansiedade
+  - crise de ansiedade
+  - crise de pânico
+  - crise de panico
+  - pânico
+  - panico
+  - depressão
+  - depressao
+  - transtorno bipolar
+  - bipolaridade
+  - toc
+  - transtorno obsessivo compulsivo
+  - esquizofrenia
+  - cansaço mental
+  - cansaco mental
+  - esgotamento
+  - burnout
+  - exaustão mental
+  - exaustao mental
+  weak_keywords:
+  - insônia
+  - insonia
+  - estresse
+  - stress
+  - humor
+  - irritabilidade
+  - falta de concentração
+  - falta de concentracao
+  - ataque de nervos
+  - desânimo
+  - desanimo
+  - sem energia
+  - sobrecarga
+- name: Gastroenterologia
+  confidence: 0.7
+  confidence_reason: Sintomas GI são comuns e parcialmente difusos, apesar de termos fortes existirem.
+  strong_keywords:
+  - gastroenterologista
+  - gastro
+  - azia
+  - refluxo
+  - gastrite
+  - úlcera
+  - ulcera
+  - dor abdominal
+  - dor na barriga
+  - intestino
+  - síndrome do intestino irritável
+  - sindrome do intestino irritavel
+  - dor no estômago
+  - dor no estomago
+  - intolerância alimentar
+  - intolerancia alimentar
+  weak_keywords:
+  - náusea
+  - nausea
+  - vômito
+  - vomito
+  - diarreia
+  - constipação
+  - constipacao
+  - prisão de ventre
+  - prisao de ventre
+  - gases
+  - estufamento
+  - má digestão
+  - ma digestao
+  - empachamento
+- name: Pneumologia
+  confidence: 0.7
+  confidence_reason: Termos respiratórios ajudam, mas parte das queixas é sistêmica.
+  strong_keywords:
+  - pneumologista
+  - pneumo
+  - asma
+  - bronquite
+  - chiado no peito
+  - chiado
+  - falta de ar ao respirar
+  - tosse crônica
+  - tosse cronica
+  - dpoc
+  - falta de ar ao esforço
+  - falta de ar aos esforços
+  - chiado ao respirar
+  weak_keywords:
+  - falta de ar
+  - tosse
+  - catarro
+  - dor ao respirar
+  - aperto no peito
+  - respiração curta
+  - respiracao curta
+  - tosse com catarro
+- name: Nefrologia
+  confidence: 0.7
+  confidence_reason: Termos renais podem ser específicos, mas usuários leigos nem sempre os usam.
+  strong_keywords:
+  - nefrologista
+  - nefrologia
+  - rim
+  - rins
+  - insuficiência renal
+  - insuficiencia renal
+  - creatinina alta
+  - ureia alta
+  - hemodiálise
+  - hemodialise
+  - diálise
+  - dialise
+  - proteinúria
+  - proteinuria
+  weak_keywords:
+  - inchaço
+  - inchaco
+  - inchaço nas pernas
+  - inchaco nas pernas
+  - urina espumosa
+  - pressão alta
+  - pressao alta
+  - dor no rim
+- name: Alergia e Imunologia
+  confidence: 0.7
+  confidence_reason: Alguns termos são claros, porém muitos sintomas são compartilhados com outras áreas.
+  strong_keywords:
+  - alergista
+  - alergologia
+  - alergia
+  - urticária
+  - urticaria
+  - angioedema
+  - anafilaxia
+  - teste alérgico
+  - teste alergico
+  - imunoterapia
+  - vacina para alergia
+  - rinite alérgica
+  - rinite alergica
+  - alergia alimentar
+  - rinite
+  - asma alérgica
+  - asma alergica
+  weak_keywords:
+  - coceira
+  - espirros
+  - coriza
+  - nariz escorrendo
+  - olhos coçando
+  - olhos cocando
+  - alergia na pele
+  - chiado
+  - espirro
+  - nariz coçando
+  - nariz cocando
+- name: Hematologia e Hemoterapia
+  confidence: 0.7
+  confidence_reason: Termos de sangue/hemograma podem ser específicos, mas nem sempre aparecem no relato livre.
+  strong_keywords:
+  - hematologista
+  - hematologia
+  - anemia
+  - ferro baixo
+  - hemoglobina baixa
+  - leucemia
+  - linfoma
+  - plaquetas baixas
+  - plaquetas altas
+  - hemofilia
+  - distúrbio de coagulação
+  - disturbio de coagulacao
+  weak_keywords:
+  - hematócrito
+  - hematocrito
+  - hemograma
+  - sangramento fácil
+  - sangramento facil
+  - hematoma
+  - manchas roxas
+  - cansaço
+  - cansaco
+  - palidez
+- name: Oncologia Clínica
+  confidence: 0.7
+  confidence_reason: Termos podem ser específicos, mas dependem muito de contexto e histórico.
+  strong_keywords:
+  - oncologista
+  - oncologia
+  - câncer
+  - cancer
+  - tumor
+  - neoplasia
+  - quimioterapia
+  - imunoterapia
+  - metástase
+  - metastase
+  - biópsia
+  - biopsia
+  weak_keywords:
+  - nódulo
+  - nodulo
+  - caroço
+  - caroco
+  - perda de peso
+  - emagrecimento
+  - cansaço
+  - cansaco
+  - linfonodo
+  - íngua
+  - ingua
+- name: Angiologia
+  confidence: 0.7
+  confidence_reason: Alguns termos vasculares são relativamente específicos.
+  strong_keywords:
+  - angiologia
+  - angiologista
+  - varizes
+  - vasinhos
+  - trombose
+  - dor e inchaço na perna
+  - dor e inchaco na perna
+  - má circulação
+  - ma circulacao
+  - claudicação
+  - claudicacao
+  weak_keywords:
+  - perna inchada
+  - pernas inchadas
+  - inchaço nas pernas
+  - inchaco nas pernas
+  - dor na perna
+  - formigamento na perna
+  - câimbra
+  - cãibra
+  - caibra
+- name: Reumatologia
+  confidence: 0.68
+  confidence_reason: Sintomas (dor/articulações) são frequentes e podem cruzar outras áreas.
+  strong_keywords:
+  - reumatologista
+  - reumatologia
+  - artrite
+  - artrite reumatoide
+  - lúpus
+  - lupus
+  - gota
+  - fibromialgia
+  - dor nas articulações
+  - dor nas articulacoes
+  - inchaço nas articulações
+  - inchaco nas articulacoes
+  - dor nas juntas
+  - juntas inchadas
+  - inflamação nas juntas
+  - inflamacao nas juntas
+  weak_keywords:
+  - dor articular
+  - rigidez
+  - rigidez de manhã
+  - rigidez de manha
+  - dor no corpo
+  - dor crônica
+  - dor cronica
+  - inflamação
+  - inflamacao
+  - dor no corpo inteiro
+  - dor generalizada
+- name: Infectologia
+  confidence: 0.68
+  confidence_reason: Muitos sinais são gerais; termos específicos variam bastante.
+  strong_keywords:
+  - infectologista
+  - infectologia
+  - hiv
+  - aids
+  - hepatite
+  - tuberculose
+  - dengue
+  - zika
+  - chikungunya
+  - mononucleose
+  - infecção recorrente
+  - infeccao recorrente
+  - covid
+  - covid-19
+  - infecção de repetição
+  - infeccao de repeticao
+  weak_keywords:
+  - febre prolongada
+  - febre persistente
+  - infecção
+  - infeccao
+  - calafrios
+  - ínguas
+  - inguas
+  - dor no corpo
+  - mal-estar
+  - mal estar
+  - febre que não passa
+  - febre que nao passa
+- name: Genética Médica
+  confidence: 0.68
+  confidence_reason: Pode ser específica (história familiar/síndromes), mas relato livre varia.
+  strong_keywords:
+  - genética médica
+  - genetica medica
+  - geneticista
+  - teste genético
+  - teste genetico
+  - painel genético
+  - painel genetico
+  - cariótipo
+  - cariotipo
+  - mutação
+  - mutacao
+  - síndrome genética
+  - sindrome genetica
+  - doença hereditária
+  - doenca hereditaria
+  weak_keywords:
+  - histórico familiar
+  - historico familiar
+  - doença rara
+  - doenca rara
+  - malformação
+  - malformacao
+  - aconselhamento genético
+  - aconselhamento genetico
+- name: Medicina do Trabalho
+  confidence: 0.66
+  confidence_reason: 'Contexto ocupacional ajuda a direcionar (ex.: exames e vínculo ao trabalho).'
+  strong_keywords:
+  - medicina do trabalho
+  - médico do trabalho
+  - medico do trabalho
+  - exame admissional
+  - exame demissional
+  - exame periódico
+  - exame periodico
+  - aso
+  - cat
+  - acidente de trabalho
+  weak_keywords:
+  - afastamento
+  - inss
+  - doença ocupacional
+  - doenca ocupacional
+  - ergonomia
+- name: Medicina do Esporte
+  confidence: 0.66
+  confidence_reason: Contexto de atividade física/treino pode direcionar, mas sintomas cruzam ortopedia/fisio.
+  strong_keywords:
+  - medicina do esporte
+  - médico do esporte
+  - medico do esporte
+  - lesão esportiva
+  - lesao esportiva
+  - retorno ao esporte
+  - atleta
+  weak_keywords:
+  - treino
+  - corrida
+  - academia
+  - dor após treino
+  - dor apos treino
+- name: Neonatologia
+  confidence: 0.66
+  confidence_reason: Faixa etária extremamente específica, mas costuma surgir por contexto (recém-nascido).
+  strong_keywords:
+  - neonatologia
+  - neonatologista
+  - uti neonatal
+  - recém-nascido
+  - recem-nascido
+  - prematuro
+  weak_keywords:
+  - amamentação
+  - amamentacao
+  - dificuldade para mamar
+- name: Cardiologia Pediátrica
+  confidence: 0.66
+  confidence_reason: Subespecialidade; precisa de contexto pediátrico + termos cardíacos.
+  strong_keywords:
+  - cardiologia pediátrica
+  - cardiologia pediatrica
+  - cardiologista pediátrico
+  - cardiologista pediatrico
+  - cardiopatia congênita
+  - cardiopatia congenita
+  - sopro no coração do bebê
+  - sopro no coracao do bebe
+  weak_keywords:
+  - cansaço ao mamar
+  - cansaco ao mamar
+  - falta de ar na criança
+  - falta de ar na crianca
+- name: Nefrologia Pediátrica
+  confidence: 0.66
+  confidence_reason: Subespecialidade; precisa de contexto pediátrico + termos renais/urinários.
+  strong_keywords:
+  - nefrologia pediátrica
+  - nefrologia pediatrica
+  - rim na criança
+  - rim na crianca
+  - infecção urinária recorrente em criança
+  - infeccao urinaria recorrente em crianca
+  weak_keywords:
+  - urina espumosa na criança
+  - urina espumosa na crianca
+  - inchaço na criança
+  - inchaco na crianca
+- name: Nutrologia
+  confidence: 0.66
+  confidence_reason: Termos de composição corporal/dieta podem direcionar, mas cruzam endocrino e clínica.
+  strong_keywords:
+  - nutrologia
+  - nutrologista
+  - deficiência nutricional
+  - deficiencia nutricional
+  - suplementação
+  - suplementacao
+  - reeducação alimentar
+  - reeducacao alimentar
+  - avaliação nutricional
+  - avaliacao nutricional
+  weak_keywords:
+  - dieta
+  - reeducação alimentar
+  - reeducacao alimentar
+  - ganho de peso
+  - perda de peso
+  - quero emagrecer
+  - ganhar massa
+  - perder gordura
+- name: Cirurgia Vascular
+  confidence: 0.66
+  confidence_reason: Mais associada a procedimento; termos do usuário nem sempre apontam direto.
+  strong_keywords:
+  - cirurgia vascular
+  - cirurgião vascular
+  - cirurgiao vascular
+  - cirurgia de varizes
+  - operar varizes
+  weak_keywords:
+  - tratamento de varizes
+  - ferida na perna
+  - úlcera na perna
+  - ulcera na perna
+- name: Cirurgia Cardiovascular
+  confidence: 0.66
+  confidence_reason: Muito de procedimento; geralmente surge por contexto de doença já investigada.
+  strong_keywords:
+  - cirurgia cardiovascular
+  - cirurgia cardíaca
+  - cirurgia cardiaca
+  - ponte de safena
+  - troca de válvula
+  - troca de valvula
+  weak_keywords:
+  - angioplastia
+  - stent
+  - cateterismo
+- name: Neurocirurgia
+  confidence: 0.66
+  confidence_reason: Procedimento/encaminhamento; relato livre costuma cair primeiro em neurologia.
+  strong_keywords:
+  - neurocirurgia
+  - neurocirurgião
+  - neurocirurgiao
+  - cirurgia do cérebro
+  - cirurgia do cerebro
+  - cirurgia de coluna
+  weak_keywords:
+  - compressão do nervo
+  - compressao do nervo
+  - dor irradiando
+- name: Medicina do Sono
+  confidence: 0.66
+  confidence_reason: Queixas de sono são comuns, mas podem cruzar psiquiatria/neuro/pneumo.
+  strong_keywords:
+  - medicina do sono
+  - polissonografia
+  - apneia do sono
+  - apneia
+  - ronco
+  - narcolepsia
+  - não consigo dormir
+  - nao consigo dormir
+  - acordo várias vezes
+  - acordo varias vezes
+  weak_keywords:
+  - insônia
+  - insonia
+  - sonolência diurna
+  - sonolencia diurna
+  - sono leve
+  - sono ruim
+- name: Geriatria
+  confidence: 0.65
+  confidence_reason: Fortemente ligada a faixa etária, mas queixas são amplas/múltiplas.
+  strong_keywords:
+  - geriatria
+  - geriatra
+  - idoso
+  - idosa
+  - terceira idade
+  weak_keywords:
+  - quedas
+  - polifarmácia
+  - polifarmacia
+  - fragilidade
+- name: Medicina Física e Reabilitação (Fisiatria)
+  confidence: 0.64
+  confidence_reason: Relacionada a reabilitação/funcionalidade; termos podem ser menos diretos no relato.
+  strong_keywords:
+  - fisiatria
+  - fisiatra
+  - reabilitação
+  - reabilitacao
+  - reabilitação motora
+  - reabilitacao motora
+  weak_keywords:
+  - fisioterapia
+  - limitação de movimento
+  - limitacao de movimento
+  - dor crônica
+  - dor cronica
+- name: Cirurgia Torácica
+  confidence: 0.64
+  confidence_reason: Encaminhamento mais especializado; queixas iniciais podem ir para cardio/pneumo.
+  strong_keywords:
+  - cirurgia torácica
+  - cirurgia toracica
+  - cirurgião torácico
+  - cirurgiao toracico
+  - pneumotórax
+  - pneumotorax
+  weak_keywords:
+  - nódulo no pulmão
+  - nodulo no pulmao
+  - pleura
+- name: Cirurgia do Aparelho Digestivo
+  confidence: 0.64
+  confidence_reason: Geralmente surge após investigação gastro; é mais de procedimento.
+  strong_keywords:
+  - cirurgia digestiva
+  - cirurgia do aparelho digestivo
+  - cirurgia bariátrica
+  - cirurgia bariatrica
+  - bariátrica
+  - bariatrica
+  weak_keywords:
+  - hérnia de hiato
+  - hernia de hiato
+  - refluxo cirurgia
+- name: Cirurgia de Cabeça e Pescoço
+  confidence: 0.64
+  confidence_reason: Especializada e frequentemente pós-triagem; termos do usuário variam.
+  strong_keywords:
+  - cirurgia de cabeça e pescoço
+  - cirurgia cabeca e pescoco
+  - nódulo no pescoço
+  - nodulo no pescoco
+  - tireoide nódulo
+  - tireoide nodulo
+  weak_keywords:
+  - rouquidão persistente
+  - rouquidao persistente
+  - caroço no pescoço
+  - caroco no pescoco
+- name: Radioterapia
+  confidence: 0.62
+  confidence_reason: Normalmente vem por contexto oncológico já estabelecido.
+  strong_keywords:
+  - radioterapia
+  - braquiterapia
+  - acelerador linear
+  - planejamento de radioterapia
+  weak_keywords:
+  - tratamento oncológico
+  - tratamento oncologico
+  - quimioterapia
+  - tumor
+- name: Cirurgia Geral
+  confidence: 0.62
+  confidence_reason: Especialidade de procedimento; relato do usuário raramente aponta direto para 'cirurgia geral'.
+  strong_keywords:
+  - cirurgia geral
+  - cirurgião geral
+  - cirurgiao geral
+  - apendicite
+  - hérnia
+  - hernia
+  - colecistectomia
+  weak_keywords:
+  - pré-operatório
+  - pre-operatorio
+  - pós-operatório
+  - pos-operatorio
+  - curativo
+- name: Cirurgia Pediátrica
+  confidence: 0.62
+  confidence_reason: Procedimento em faixa etária; em relato livre geralmente cai em pediatria primeiro.
+  strong_keywords:
+  - cirurgia pediátrica
+  - cirurgia pediatrica
+  - cirurgião pediátrico
+  - cirurgiao pediatrico
+  - fimose
+  - hérnia inguinal criança
+  - hernia inguinal crianca
+  weak_keywords:
+  - cirurgia em criança
+  - cirurgia em crianca
+  - meu filho precisa operar
+  - minha filha precisa operar
+- name: Pediatria
+  confidence: 0.6
+  confidence_reason: Faixa etária específica ajuda, mas sintomas ainda podem ser difusos.
+  strong_keywords:
+  - pediatra
+  - criança
+  - crianca
+  - bebê
+  - bebe
+  - recém-nascido
+  - recem-nascido
+  - meu filho
+  - minha filha
+  weak_keywords:
+  - vacina
+  - vacinas
+  - puericultura
+  - crescimento
+- name: Anestesiologia
+  confidence: 0.6
+  confidence_reason: Mais ligada a contexto de procedimento do que a sintomas do usuário.
+  strong_keywords:
+  - anestesia
+  - anestesiologista
+  - anestesista
+  - sedação
+  - sedacao
+  - raquidiana
+  - peridural
+  weak_keywords:
+  - pré-anestésico
+  - pre-anestesico
+  - reação à anestesia
+  - reacao a anestesia
+- name: Radiologia e Diagnóstico por Imagem
+  confidence: 0.6
+  confidence_reason: Normalmente aparece como exame/serviço, não como queixa principal.
+  strong_keywords:
+  - tomografia
+  - ressonância
+  - ressonancia
+  - ultrassom
+  - raio-x
+  - raio x
+  - laudo de imagem
+  weak_keywords:
+  - exame de imagem
+  - achado no exame
+  - alteração no exame
+  - alteracao no exame
+- name: Medicina Intensiva
+  confidence: 0.6
+  confidence_reason: Contexto de internação/UTI, não costuma ser pedido por sintoma específico.
+  strong_keywords:
+  - uti
+  - cti
+  - intensivista
+  - ventilação mecânica
+  - ventilacao mecanica
+  - intubação
+  - intubacao
+  weak_keywords:
+  - paciente crítico
+  - paciente critico
+  - monitorização
+  - monitorizacao
+- name: Medicina de Emergência
+  confidence: 0.6
+  confidence_reason: Contexto de pronto atendimento; linguagem de sintomas é ampla.
+  strong_keywords:
+  - pronto socorro
+  - pronto-socorro
+  - pronto atendimento
+  - upa
+  - samu
+  - urgência
+  - urgencia
+  - emergência
+  - emergencia
+  weak_keywords:
+  - observação
+  - observacao
+  - fui ao pronto socorro
+- name: Medicina Paliativa
+  confidence: 0.6
+  confidence_reason: Contexto de cuidado/qualidade de vida é amplo; termos do usuário variam.
+  strong_keywords:
+  - cuidados paliativos
+  - medicina paliativa
+  - paliativista
+  - qualidade de vida
+  - controle de sintomas
+  weak_keywords:
+  - doença avançada
+  - doenca avancada
+  - cuidado domiciliar
+  - dor oncológica
+  - dor oncologica
+- name: Endoscopia Digestiva
+  confidence: 0.6
+  confidence_reason: Mais serviço/procedimento do que especialidade citada por sintoma.
+  strong_keywords:
+  - endoscopia
+  - gastroscopia
+  - colonoscopia
+  - endoscopia digestiva
+  - pólipo
+  - polipo
+  weak_keywords:
+  - preparo para colonoscopia
+  - preparo para endoscopia
+  - laudo da endoscopia
+- name: Medicina Legal e Perícia Médica
+  confidence: 0.6
+  confidence_reason: Contexto pericial/jurídico é específico, mas não é queixa clínica típica.
+  strong_keywords:
+  - perícia médica
+  - pericia medica
+  - perito médico
+  - perito medico
+  - laudo pericial
+  - inss
+  weak_keywords:
+  - afastamento
+  - auxílio-doença
+  - auxilio-doenca
+  - processo
+- name: Medicina Nuclear
+  confidence: 0.6
+  confidence_reason: Geralmente aparece como exame/serviço; pouco citado no relato livre.
+  strong_keywords:
+  - medicina nuclear
+  - cintilografia
+  - pet-ct
+  - pet ct
+  - spect
+  - iodo radioativo
+  weak_keywords:
+  - captação
+  - captacao
+  - laudo do pet
+  - exame radioativo
+- name: Medicina de Família e Comunidade
+  confidence: 0.58
+  confidence_reason: Porta de entrada longitudinal; linguagem geralmente ampla.
+  strong_keywords:
+  - médico de família
+  - medico de familia
+  - medicina de família
+  - medicina de familia
+  - saúde da família
+  - saude da familia
+  weak_keywords:
+  - prevenção
+  - prevencao
+  - rotina
+  - posto de saúde
+  - posto de saude
+- name: Patologia
+  confidence: 0.58
+  confidence_reason: Em geral surge por contexto de biópsia/laudo, pouco citado em relato livre.
+  strong_keywords:
+  - patologia
+  - patologista
+  - anatomopatológico
+  - anatomopatologico
+  - biópsia
+  - biopsia
+  weak_keywords:
+  - laudo anatomopatológico
+  - laudo anatomopatologico
+  - imuno-histoquímica
+  - imuno-histoquimica
+- name: Patologia Clínica / Medicina Laboratorial
+  confidence: 0.58
+  confidence_reason: Forte como serviço de laboratório; menos comum como 'especialidade' no relato do usuário.
+  strong_keywords:
+  - medicina laboratorial
+  - patologia clínica
+  - patologia clinica
+  - hemograma
+  - exame de sangue
+  - exames de sangue
+  weak_keywords:
+  - resultado do exame
+  - jejum
+  - coleta
+- name: Medicina Preventiva e Social
+  confidence: 0.58
+  confidence_reason: Mais ligada a gestão/saúde pública; termos do usuário raramente apontam direto.
+  strong_keywords:
+  - saúde pública
+  - saude publica
+  - epidemiologia
+  - medicina preventiva
+  weak_keywords:
+  - prevenção
+  - prevencao
+  - rastreamento
+  - campanha de vacinação
+  - campanha de vacinacao
+- name: Clínica Médica
   confidence: 0.55
-<<<<<<< HEAD
-  why: >
-    Não houve correspondência forte suficiente.
-    Clínica médica é uma boa porta de entrada para triagem inicial.
-=======
-  why: "Não houve correspondência forte; clínica médica é uma boa porta de entrada para triagem."
->>>>>>> 847ab09fe56758bb3a31b4f230420f274ea5fa2d
-  next_step: "Um(a) clínico(a) pode orientar a especialidade adequada após avaliação."
+  confidence_reason: Porta de entrada; sintomas e descrições tendem a ser difusos.
+  strong_keywords:
+  - check-up
+  - check up
+  - consulta geral
+  - clínico geral
+  - clinico geral
+  - exames de rotina
+  - consulta de rotina
+  - avaliação geral
+  - avaliacao geral
+  weak_keywords:
+  - cansaço
+  - cansaco
+  - mal-estar
+  - mal estar
+  - febre
+  - dor no corpo
+fallback:
+  name: Clínica Médica
+  confidence: 0.55
+  why: 'Não houve correspondência forte suficiente. Clínica médica é uma boa porta de entrada para triagem inicial.
+
+    '
+  next_step: Um(a) clínico(a) pode orientar a especialidade adequada após avaliação.
