@@ -1,5 +1,5 @@
 import streamlit as st
-from engine import load_rules, suggest_specialty
+from engine_ruleset import load_ruleset, suggest_specialty
 
 st.set_page_config(
     page_title="Health Care",
@@ -27,13 +27,13 @@ def _clear_query_params():
 
 # Estado
 if "text" not in st.session_state:
-    st.session_state.text = ""
+    st.session_state["text"] = ""
 if "last" not in st.session_state:
     st.session_state.last = None
 
 # Se clicou no lixinho (?clear=1)
 if _get_clear_flag():
-    st.session_state.text = ""
+    st.session_state["text"] = ""
     st.session_state.last = None
     _clear_query_params()
     st.rerun()
@@ -197,13 +197,15 @@ with st.form("triage_form", clear_on_submit=False):
     # lixinho dentro do box (link)
     st.markdown('<a class="trash" href="?clear=1" title="Limpar">🗑️</a>', unsafe_allow_html=True)
 
-    st.session_state.text = st.text_area(
+    st.text_area(
         label="",
-        value=st.session_state.text,
+        key="text",
         placeholder="Ex: tenho dor no dente… / estou acima do peso… / estou com ansiedade…",
         height=140,
         label_visibility="collapsed",
     )
+
+
 
     # CTA centralizado
     c1, c2, c3 = st.columns([1, 2, 1])
@@ -211,10 +213,11 @@ with st.form("triage_form", clear_on_submit=False):
         submit = st.form_submit_button("Sugerir especialidade", type="primary", use_container_width=True)
 
 if submit:
-    if not st.session_state.text.strip():
+    user_text = (st.session_state.get("text") or "").strip()
+    if not user_text:
         st.warning("Escreva um texto (genérico) para eu sugerir uma especialidade.")
     else:
-        rules = load_rules("rules.yaml")
+        rules = load_ruleset("ruleset.v5.json")
         st.session_state.last = suggest_specialty(st.session_state.text, rules)
 
 if st.session_state.last is not None:

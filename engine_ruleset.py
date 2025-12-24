@@ -1,222 +1,193 @@
-# engine_ruleset.py
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Dict, List, Tuple, Optional
 import json
 import re
 import unicodedata
+from dataclasses import dataclass
+from typing import Any, Dict, List, Tuple
 
 
-DISCLAIMER_DEFAULT = (
-    "Este app sugere uma especialidade com base no texto informado. "
-    "Não realiza diagnóstico, não prescreve e não define urgência."
-)
+@dataclass(frozen=True)
+class Suggestion:
+    specialty: str
+    confidence: float
+    matched_keywords: List[str]
+    why: str
+    next_step: str
+    disclaimer: str
+    alternatives: List[Dict[str, Any]]
 
 
-def normalize_text(s: str) -> str:
-    """
-    Normalização em 3 passos:
-      1) lower/trim/colapsar espaços
-      2) remover acentos/diacríticos
-      3) normalizar pontuação/hífen/barra para espaços (mantém só [a-z0-9 ])
-    """
-    if not s:
-        return ""
-    s = s.lower().strip()
-
-    # 2) remove diacríticos
+def _strip_accents(s: str) -> str:
     s = unicodedata.normalize("NFKD", s)
-    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    return "".join(ch for ch in s if not unicodedata.combining(ch))
 
-    # 3) troca tudo que não for letra/dígito por espaço
-    s = re.sub(r"[^a-z0-9]+", " ", s)
 
-    # 1) colapsa espaços
-    s = re.sub(r"\s+", " ", s).strip()
-    return s
+def _normalize(text: str) -> str:
+    text = str(text).strip().lower()
+    text = _strip_accents(text)
+    # troca pontuação por espaço (mantém letras/números)
+    text = re.sub(r"[^a-z0-9\s]+", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def _kw_matches(text_norm: str, kw_norm: str) -> bool:
     if not kw_norm:
         return False
+    # frases (com espaço) -> substring
     if " " in kw_norm:
         return kw_norm in text_norm
-    # palavra única: boundary
-    return re.search(rf"\b{re.escape(kw_norm)}\b", text_norm) is not None
+    # palavra única -> boundary
+    return re.search(r"\b" + re.escape(kw_norm) + r"\b", text_norm) is not None
 
 
-def build_synonyms_map(synonyms_raw: Dict[str, List[str]]) -> Dict[str, List[Tuple[str, str]]]:
-    """
-    Retorna: canonical_norm -> [(variant_norm, variant_original), ...]
-    """
-    out: Dict[str, List[Tuple[str, str]]] = {}
-    for canonical, variants in (synonyms_raw or {}).items():
-        c_norm = normalize_text(canonical)
-        if not c_norm:
-            continue
-        bucket: List[Tuple[str, str]] = []
-        for v in variants or []:
-            v_norm = normalize_text(v)
-            if not v_norm or v_norm == c_norm:
-                continue
-            bucket.append((v_norm, v))
-        # dedupe por norm
-        seen = set()
-        uniq: List[Tuple[str, str]] = []
-        for v_norm, v_orig in bucket:
-            if v_norm in seen:
-                continue
-            seen.add(v_norm)
-            uniq.append((v_norm, v_orig))
-        out[c_norm] = uniq
-    return out
-
-
-def kw_matches_with_synonyms(
-    text_norm: str,
-    kw_norm: str,
-    syn_map: Dict[str, List[Tuple[str, str]]],
-) -> Tuple[bool, Optional[str]]:
-    """
-    Retorna (matched, matched_variant_original_or_none)
-    """
-    if _kw_matches(text_norm, kw_norm):
-        return True, None
-    for v_norm, v_orig in syn_map.get(kw_norm, []):
-        if _kw_matches(text_norm, v_norm):
-            return True, v_orig
-    return False, None
-
-
-@dataclass(frozen=True)
-class Suggestion:
-    specialtyId: str
-    specialtyName: str
-    score: int
-    strongHits: List[str]
-    weakHits: List[str]
-    why: str
-    disclaimer: str
-
-
-def load_ruleset(path: str) -> Dict[str, Any]:
+def load_ruleset(path: str = "ruleset.v4.json") -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+        return json.load(f) or {}
 
 
-def suggest(text: str, ruleset: Dict[str, Any]) -> Suggestion:
-    text_norm = normalize_text(text)
+def _apply_synonyms(text_norm: str, ruleset: Dict[str, Any]) -> Tuple[str, List[Tuple[str, str]]]:
+    """
+    synonyms no ruleset:
+      "dor de cabeça": ["cefaleia", ...]
+    Se encontrar "cefaleia" no texto, injeta "dor de cabeça" no texto normalizado.
+    """
+    syn = ruleset.get("synonyms") or {}
+    if not isinstance(syn, dict):
+        return text_norm, []
 
-    scoring = ruleset.get("scoring", {})
+    injected: List[str] = []
+    hits: List[Tuple[str, str]] = []
+    seen = set()
+
+    for canonical, variants in syn.items():
+        if not canonical or not isinstance(variants, list):
+            continue
+        canon_norm = _normalize(canonical)
+        if not canon_norm:
+            continue
+
+        for v in variants:
+            v_str = str(v)
+            v_norm = _normalize(v_str)
+            if not v_norm:
+                continue
+            if _kw_matches(text_norm, v_norm):
+                key = (v_str, canonical)
+                if key not in seen:
+                    seen.add(key)
+                    hits.append(key)
+                injected.append(canon_norm)
+                break
+
+    if not injected:
+        return text_norm, hits
+
+    enriched = (text_norm + " " + " ".join(injected)).strip()
+    return enriched, hits
+
+
+def suggest_specialty(user_text: str, ruleset: Dict[str, Any]) -> Suggestion:
+    text = _normalize(user_text)
+    text, syn_hits = _apply_synonyms(text, ruleset)
+
+    scoring = ruleset.get("scoring") or {}
     strong_w = int(scoring.get("strongWeight", 2))
     weak_w = int(scoring.get("weakWeight", 1))
     min_score = int(scoring.get("minScore", 1))
+    top_k = int(scoring.get("topK", 3))
 
-    fallback_id = ruleset.get("fallbackSpecialtyId", "clinica_medica")
-    syn_map = build_synonyms_map(ruleset.get("synonyms", {}))
+    disclaimer = ruleset.get(
+        "disclaimer",
+        "⚠️ Importante: isto NÃO é diagnóstico, NÃO é prescrição e NÃO define urgência. "
+        "É apenas uma sugestão de especialidade para orientar o próximo passo.",
+    )
 
-    best: Optional[Dict[str, Any]] = None
-    best_score = -1
-    best_strong = -1
-    best_conf = -1.0
-    best_hits: Tuple[List[str], List[str]] = ([], [])
+    # (score, strong_count, base_conf, spec, matched_list)
+    candidates: List[Tuple[int, int, float, Dict[str, Any], List[str]]] = []
 
-    runner_up: Optional[Tuple[Dict[str, Any], int, int, float, Tuple[List[str], List[str]]]] = None
+    for spec in ruleset.get("specialties") or []:
+        name = str(spec.get("displayName", "")).strip()
+        if not name:
+            continue
 
-    for sp in ruleset.get("specialties", []):
+        base_conf = float(spec.get("confidence", 0.6))
         strong_hits: List[str] = []
         weak_hits: List[str] = []
 
-        # strong
-        for kw in sp.get("strong", []):
-            kw_norm = normalize_text(kw)
-            matched, via_syn = kw_matches_with_synonyms(text_norm, kw_norm, syn_map)
-            if matched:
-                strong_hits.append(kw if via_syn is None else f"{kw} (sin.: {via_syn})")
+        for kw in spec.get("strong") or []:
+            kw_str = str(kw)
+            if _kw_matches(text, _normalize(kw_str)):
+                strong_hits.append(kw_str)
 
-        # weak
-        for kw in sp.get("weak", []):
-            kw_norm = normalize_text(kw)
-            matched, via_syn = kw_matches_with_synonyms(text_norm, kw_norm, syn_map)
-            if matched:
-                weak_hits.append(kw if via_syn is None else f"{kw} (sin.: {via_syn})")
+        for kw in spec.get("weak") or []:
+            kw_str = str(kw)
+            if _kw_matches(text, _normalize(kw_str)):
+                weak_hits.append(kw_str)
 
-        score = strong_w * len(strong_hits) + weak_w * len(weak_hits)
-        if score < min_score:
+        weighted_score = strong_w * len(strong_hits) + weak_w * len(weak_hits)
+        if weighted_score < min_score:
             continue
 
-        conf = float(sp.get("confidence", 0.0))
-        strong_count = len(strong_hits)
+        candidates.append((weighted_score, len(strong_hits), base_conf, spec, strong_hits + weak_hits))
 
-        # ranking
-        is_better = (
-            (score > best_score)
-            or (score == best_score and strong_count > best_strong)
-            or (score == best_score and strong_count == best_strong and conf > best_conf)
-        )
-        if is_better:
-            # salva runner-up anterior
-            if best is not None:
-                runner_up = (best, best_score, best_strong, best_conf, best_hits)
+    if not candidates:
+        # fallback
+        fb_id = ruleset.get("fallbackSpecialtyId", "clinica_medica")
+        # tenta achar displayName do fallback
+        fb_name = "Clínica Médica"
+        for s in ruleset.get("specialties") or []:
+            if s.get("id") == fb_id:
+                fb_name = s.get("displayName", fb_name)
+                break
 
-            best = sp
-            best_score = score
-            best_strong = strong_count
-            best_conf = conf
-            best_hits = (strong_hits, weak_hits)
-        else:
-            # atualiza runner-up
-            if runner_up is None:
-                runner_up = (sp, score, strong_count, conf, (strong_hits, weak_hits))
-            else:
-                ru_sp, ru_score, ru_strong, ru_conf, ru_hits = runner_up
-                ru_better = (
-                    (score > ru_score)
-                    or (score == ru_score and strong_count > ru_strong)
-                    or (score == ru_score and strong_count == ru_strong and conf > ru_conf)
-                )
-                if ru_better:
-                    runner_up = (sp, score, strong_count, conf, (strong_hits, weak_hits))
-
-    # fallback se nada bateu
-    if best is None:
-        fb = next((s for s in ruleset.get("specialties", []) if s.get("id") == fallback_id), None)
-        if fb is None:
-            fb = {"id": fallback_id, "displayName": "Clínica Médica"}
         return Suggestion(
-            specialtyId=fb["id"],
-            specialtyName=fb.get("displayName", fb["id"]),
-            score=0,
-            strongHits=[],
-            weakHits=[],
-            why="Não encontrei termos específicos suficientes; sugerindo uma opção mais geral.",
-            disclaimer=DISCLAIMER_DEFAULT,
+            specialty=fb_name,
+            confidence=0.55,
+            matched_keywords=[],
+            why="Sugestão padrão (sem correspondência forte suficiente).",
+            next_step="Busque uma avaliação com um(a) profissional de saúde.",
+            disclaimer=disclaimer,
+            alternatives=[],
         )
 
-    # (opcional já preparando Upgrade 2) “penaliza generalista” se houver runner-up próximo
-    if best.get("generalist") is True and runner_up is not None:
-        ru_sp, ru_score, _, _, ru_hits = runner_up
-        # se runner-up estiver “perto”, prefere o mais específico
-        if ru_score >= best_score - 1 and ru_score > 0:
-            best = ru_sp
-            best_score = ru_score
-            best_hits = ru_hits
+    # Upgrade 2 (mesma ideia): se existe especialidade não-generalista com strong>0, remove generalistas
+    has_clear_specific = any(sc > 0 and not bool(spec.get("generalist", False)) for (_, sc, _, spec, _) in candidates)
+    if has_clear_specific:
+        candidates = [c for c in candidates if not bool(c[3].get("generalist", False))]
 
-    strong_hits, weak_hits = best_hits
-    why_parts = []
-    if strong_hits:
-        why_parts.append(f"Sinais fortes: {', '.join(strong_hits[:6])}")
-    if weak_hits:
-        why_parts.append(f"Sinais fracos: {', '.join(weak_hits[:6])}")
-    why = " | ".join(why_parts) if why_parts else "Termos relacionados encontrados no texto."
+    candidates.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
+
+    top = candidates[: max(1, top_k)]
+    weighted_score, strong_count, base_conf, spec, matched = top[0]
+    confidence = min(0.95, base_conf + 0.02 * max(0, weighted_score - 1))
+
+    why = spec.get("why", "Correspondência por palavras-chave.")
+    why = f"{why} (fortes={strong_count}, score={weighted_score})"
+    if syn_hits:
+        why += " | sinônimos: " + ", ".join([f"{v}→{c}" for (v, c) in syn_hits])
+
+    next_step = spec.get("next_step", "Busque uma avaliação com um(a) profissional de saúde.")
+
+    alternatives: List[Dict[str, Any]] = []
+    for (ws, sc, bc, s, m) in top[1:]:
+        alternatives.append(
+            {
+                "specialty": s.get("displayName", ""),
+                "confidence": float(bc),
+                "score": int(ws),
+                "strong_hits": int(sc),
+                "matched": m,
+            }
+        )
 
     return Suggestion(
-        specialtyId=best["id"],
-        specialtyName=best.get("displayName", best["id"]),
-        score=best_score,
-        strongHits=strong_hits,
-        weakHits=weak_hits,
+        specialty=spec.get("displayName", "Clínica Médica"),
+        confidence=confidence,
+        matched_keywords=matched,
         why=why,
-        disclaimer=DISCLAIMER_DEFAULT,
+        next_step=next_step,
+        disclaimer=disclaimer,
+        alternatives=alternatives,
     )
