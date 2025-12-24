@@ -1,0 +1,1416 @@
+{
+  "version": 4,
+  "locale": "pt-BR",
+  "scoring": {
+    "strongWeight": 2,
+    "weakWeight": 1,
+    "minScore": 1
+  },
+  "fallbackSpecialtyId": "clinica_medica",
+  "synonyms": {
+    "dor de cabeça": [
+      "cefaleia"
+    ],
+    "falta de ar": [
+      "dispneia"
+    ],
+    "desmaio": [
+      "síncope"
+    ],
+    "formigamento": [
+      "parestesia"
+    ],
+    "dor nas costas": [
+      "lombalgia"
+    ],
+    "dor no estômago": [
+      "epigastralgia",
+      "dor epigástrica"
+    ],
+    "azia": [
+      "pirose"
+    ],
+    "refluxo": [
+      "refluxo gastroesofágico",
+      "drge"
+    ],
+    "pressão alta": [
+      "hipertensão"
+    ],
+    "infecção urinária": [
+      "itu"
+    ],
+    "dor ao urinar": [
+      "disúria"
+    ],
+    "cálculo renal": [
+      "nefrolitíase"
+    ],
+    "palpitação": [
+      "palpitações"
+    ],
+    "cárie": [
+      "cáries"
+    ]
+  },
+  "specialties": [
+    {
+      "id": "odontologia_dentista",
+      "displayName": "Odontologia (Dentista)",
+      "confidence": 0.85,
+      "generalist": false,
+      "strong": [
+        "dentista",
+        "odontologia",
+        "dor no dente",
+        "dor de dente",
+        "dor nos dentes",
+        "dor de dentes",
+        "dente quebrado",
+        "cárie",
+        "canal",
+        "gengiva inchada",
+        "sangramento na gengiva",
+        "abscesso",
+        "dente doendo",
+        "dor de dente forte",
+        "siso",
+        "siso inflamado",
+        "gengiva sangrando"
+      ],
+      "weak": [
+        "sensibilidade no dente",
+        "sensibilidade",
+        "gengiva",
+        "dente",
+        "mau hálito",
+        "sensibilidade ao frio",
+        "sensibilidade ao quente",
+        "dor ao mastigar"
+      ]
+    },
+    {
+      "id": "oftalmologia",
+      "displayName": "Oftalmologia",
+      "confidence": 0.82,
+      "generalist": false,
+      "strong": [
+        "oftalmologista",
+        "visão embaçada",
+        "olho vermelho",
+        "dor no olho",
+        "conjuntivite",
+        "grau do óculos",
+        "miopia",
+        "astigmatismo",
+        "catarata",
+        "vista embaçada",
+        "visao turva",
+        "não enxergo direito",
+        "terçol"
+      ],
+      "weak": [
+        "coceira no olho",
+        "lacrimejamento",
+        "olho seco",
+        "fotofobia",
+        "sensibilidade à luz",
+        "vista cansada",
+        "olhos cansados",
+        "ardência no olho"
+      ]
+    },
+    {
+      "id": "obstetricia",
+      "displayName": "Obstetrícia",
+      "confidence": 0.8,
+      "generalist": false,
+      "strong": [
+        "obstetrícia",
+        "obstetra",
+        "pré-natal",
+        "gestante",
+        "gravidez",
+        "grávida",
+        "trabalho de parto",
+        "parto",
+        "ultrassom obstétrico",
+        "teste de gravidez positivo",
+        "suspeita de gravidez",
+        "estou grávida",
+        "sangramento na gravidez"
+      ],
+      "weak": [
+        "enjoo na gravidez",
+        "nausea na gravidez",
+        "dor pélvica na gravidez",
+        "contrações",
+        "bolsa rompeu",
+        "perda de líquido",
+        "dor na barriga na gravidez",
+        "dor abdominal na gravidez"
+      ]
+    },
+    {
+      "id": "ginecologia_e_obstetricia",
+      "displayName": "Ginecologia e Obstetrícia",
+      "confidence": 0.78,
+      "generalist": false,
+      "strong": [
+        "ginecologista",
+        "obstetra",
+        "pré-natal",
+        "gestante",
+        "gravidez",
+        "grávida",
+        "atraso menstrual",
+        "menstruação",
+        "sangramento vaginal",
+        "corrimento",
+        "papanicolau",
+        "preventivo",
+        "diu",
+        "anticoncepcional",
+        "coceira vaginal",
+        "dor na relação",
+        "corrimento com cheiro",
+        "sangramento fora do ciclo"
+      ],
+      "weak": [
+        "cólica",
+        "tpm",
+        "menopausa",
+        "dor pélvica",
+        "seca vaginal",
+        "diminuição da libido"
+      ]
+    },
+    {
+      "id": "otorrinolaringologia",
+      "displayName": "Otorrinolaringologia",
+      "confidence": 0.78,
+      "generalist": false,
+      "strong": [
+        "otorrino",
+        "otorrinolaringologista",
+        "dor de ouvido",
+        "otite",
+        "sinusite",
+        "amigdalite",
+        "garganta inflamada",
+        "rouquidão",
+        "zumbido",
+        "labirintite",
+        "perda de audição",
+        "nariz sangrando",
+        "sangramento nasal"
+      ],
+      "weak": [
+        "nariz entupido",
+        "coriza",
+        "espirros",
+        "alergia respiratória",
+        "tontura",
+        "dor de garganta",
+        "dor facial",
+        "pressão no rosto"
+      ]
+    },
+    {
+      "id": "urologia",
+      "displayName": "Urologia",
+      "confidence": 0.78,
+      "generalist": false,
+      "strong": [
+        "urologista",
+        "urologia",
+        "ardor ao urinar",
+        "dor ao urinar",
+        "queimação ao urinar",
+        "infecção urinária",
+        "cistite",
+        "sangue na urina",
+        "cálculo renal",
+        "pedra no rim",
+        "próstata",
+        "urina com sangue",
+        "dificuldade para urinar",
+        "infecção urinária recorrente"
+      ],
+      "weak": [
+        "urinar muito",
+        "urinar toda hora",
+        "vontade frequente de urinar",
+        "jato fraco",
+        "dor na virilha",
+        "dor pélvica",
+        "disfunção erétil",
+        "acordo para urinar",
+        "acordo a noite para urinar",
+        "dor lombar"
+      ]
+    },
+    {
+      "id": "reproducao_humana",
+      "displayName": "Reprodução Humana",
+      "confidence": 0.78,
+      "generalist": false,
+      "strong": [
+        "reprodução humana",
+        "fertilidade",
+        "infertilidade",
+        "tentando engravidar",
+        "não consigo engravidar",
+        "fiv",
+        "fertilização in vitro",
+        "inseminação artificial",
+        "congelamento de óvulos",
+        "tentando ter filho",
+        "tentando ter bebê",
+        "tratamento de fertilidade"
+      ],
+      "weak": [
+        "ovulação",
+        "ciclo irregular",
+        "menstruação irregular",
+        "planejamento para engravidar",
+        "tratamento para engravidar",
+        "dificuldade para engravidar"
+      ]
+    },
+    {
+      "id": "mastologia",
+      "displayName": "Mastologia",
+      "confidence": 0.76,
+      "generalist": false,
+      "strong": [
+        "mastologia",
+        "mastologista",
+        "nódulo na mama",
+        "caroço na mama",
+        "mamografia alterada",
+        "ultrassom da mama alterado",
+        "secreção no mamilo",
+        "biópsia da mama",
+        "caroço no seio",
+        "secreção no seio"
+      ],
+      "weak": [
+        "dor na mama",
+        "mama inchada",
+        "mama inflamada",
+        "alteração no mamilo",
+        "cisto na mama",
+        "sensibilidade na mama",
+        "incômodo na mama"
+      ]
+    },
+    {
+      "id": "cardiologia",
+      "displayName": "Cardiologia",
+      "confidence": 0.75,
+      "generalist": false,
+      "strong": [
+        "dor no peito",
+        "palpitação",
+        "arritmia",
+        "taquicardia",
+        "falta de ar",
+        "batimento acelerado",
+        "aperto no peito",
+        "pressão no peito",
+        "coração acelerado"
+      ],
+      "weak": [
+        "pressão alta",
+        "hipertensão",
+        "colesterol alto",
+        "cansaço",
+        "inchaço nas pernas",
+        "cansaço aos esforços",
+        "tontura ao levantar"
+      ]
+    },
+    {
+      "id": "cirurgia_plastica",
+      "displayName": "Cirurgia Plástica",
+      "confidence": 0.74,
+      "generalist": false,
+      "strong": [
+        "cirurgia plástica",
+        "cirurgião plástico",
+        "rinoplastia",
+        "lipoaspiração",
+        "abdominoplastia",
+        "blefaroplastia",
+        "reconstrução",
+        "cicatriz",
+        "prótese de silicone",
+        "implante de silicone",
+        "redução de mama"
+      ],
+      "weak": [
+        "estética",
+        "correção",
+        "queimadura",
+        "assimetria",
+        "flacidez",
+        "procedimento estético"
+      ]
+    },
+    {
+      "id": "medicina_fetal",
+      "displayName": "Medicina Fetal",
+      "confidence": 0.74,
+      "generalist": false,
+      "strong": [
+        "medicina fetal",
+        "especialista em medicina fetal",
+        "ultrassom morfológico",
+        "doppler obstétrico",
+        "translucência nucal",
+        "malformação fetal",
+        "gestação de alto risco"
+      ],
+      "weak": [
+        "ultrassom da gravidez",
+        "ultrassom gestacional",
+        "exame do bebê",
+        "alteração no ultrassom",
+        "acompanhamento da gestação"
+      ]
+    },
+    {
+      "id": "ortopedia_e_traumatologia",
+      "displayName": "Ortopedia e Traumatologia",
+      "confidence": 0.72,
+      "generalist": false,
+      "strong": [
+        "dor no joelho",
+        "dor nas costas",
+        "dor na coluna",
+        "coluna",
+        "fratura",
+        "torção",
+        "entorse",
+        "luxação",
+        "hérnia de disco",
+        "dor no ombro",
+        "dor no quadril",
+        "torci o tornozelo",
+        "torci o pé"
+      ],
+      "weak": [
+        "dor muscular",
+        "tendinite",
+        "lesão",
+        "ombro",
+        "punho",
+        "cotovelo",
+        "dor ao caminhar",
+        "dor ao subir escadas"
+      ]
+    },
+    {
+      "id": "neurologia",
+      "displayName": "Neurologia",
+      "confidence": 0.72,
+      "generalist": false,
+      "strong": [
+        "neurologista",
+        "enxaqueca",
+        "convulsão",
+        "formigamento",
+        "tremor",
+        "fraqueza",
+        "desmaio",
+        "avc",
+        "derrame",
+        "perdi a força",
+        "formigamento nas mãos"
+      ],
+      "weak": [
+        "dor de cabeça",
+        "tontura",
+        "memória",
+        "insônia",
+        "dormência",
+        "confusão mental",
+        "esquecimento"
+      ]
+    },
+    {
+      "id": "endocrinologia_e_metabologia",
+      "displayName": "Endocrinologia e Metabologia",
+      "confidence": 0.72,
+      "generalist": false,
+      "strong": [
+        "endocrinologista",
+        "endocrino",
+        "diabetes",
+        "glicose alta",
+        "açúcar alto",
+        "insulina",
+        "hemoglobina glicada",
+        "tireoide",
+        "hipotireoidismo",
+        "hipertireoidismo",
+        "hashimoto",
+        "tsh",
+        "acima do peso",
+        "sobrepeso",
+        "obesidade",
+        "quero emagrecer",
+        "dificuldade para emagrecer"
+      ],
+      "weak": [
+        "engordando",
+        "emagrecendo",
+        "ganho de peso",
+        "perda de peso",
+        "metabolismo",
+        "colesterol",
+        "triglicerídeos",
+        "cansaço",
+        "muita fome",
+        "fome excessiva",
+        "compulsão alimentar"
+      ]
+    },
+    {
+      "id": "coloproctologia",
+      "displayName": "Coloproctologia",
+      "confidence": 0.72,
+      "generalist": false,
+      "strong": [
+        "coloproctologia",
+        "coloproctologista",
+        "proctologista",
+        "hemorroida",
+        "fissura anal",
+        "fístula",
+        "sangramento ao evacuar",
+        "dor ao evacuar",
+        "coceira anal"
+      ],
+      "weak": [
+        "dor anal",
+        "prurido anal",
+        "prisão de ventre",
+        "diarreia frequente",
+        "dor ao sentar"
+      ]
+    },
+    {
+      "id": "dermatologia",
+      "displayName": "Dermatologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "mancha na pele",
+        "lesão na pele",
+        "coceira",
+        "urticária",
+        "acne",
+        "espinhas",
+        "micose",
+        "queda de cabelo",
+        "dermatite",
+        "eczema",
+        "psoríase",
+        "pele descamando"
+      ],
+      "weak": [
+        "vermelhidão",
+        "alergia na pele",
+        "pele ressecada",
+        "pele seca",
+        "irritação",
+        "pele irritada",
+        "rash",
+        "brotoeja"
+      ]
+    },
+    {
+      "id": "psiquiatria",
+      "displayName": "Psiquiatria",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "psiquiatra",
+        "psiquiatria",
+        "ansiedade",
+        "crise de ansiedade",
+        "crise de pânico",
+        "pânico",
+        "depressão",
+        "transtorno bipolar",
+        "bipolaridade",
+        "toc",
+        "transtorno obsessivo compulsivo",
+        "esquizofrenia",
+        "cansaço mental",
+        "esgotamento",
+        "burnout",
+        "exaustão mental"
+      ],
+      "weak": [
+        "insônia",
+        "estresse",
+        "stress",
+        "humor",
+        "irritabilidade",
+        "falta de concentração",
+        "ataque de nervos",
+        "desânimo",
+        "sem energia",
+        "sobrecarga"
+      ]
+    },
+    {
+      "id": "gastroenterologia",
+      "displayName": "Gastroenterologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "gastroenterologista",
+        "gastro",
+        "azia",
+        "refluxo",
+        "gastrite",
+        "úlcera",
+        "dor abdominal",
+        "dor na barriga",
+        "intestino",
+        "síndrome do intestino irritável",
+        "dor no estômago",
+        "intolerância alimentar"
+      ],
+      "weak": [
+        "náusea",
+        "vômito",
+        "diarreia",
+        "constipação",
+        "prisão de ventre",
+        "gases",
+        "estufamento",
+        "má digestão",
+        "empachamento"
+      ]
+    },
+    {
+      "id": "pneumologia",
+      "displayName": "Pneumologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "pneumologista",
+        "pneumo",
+        "asma",
+        "bronquite",
+        "chiado no peito",
+        "chiado",
+        "falta de ar ao respirar",
+        "tosse crônica",
+        "dpoc",
+        "falta de ar ao esforço",
+        "falta de ar aos esforços",
+        "chiado ao respirar"
+      ],
+      "weak": [
+        "falta de ar",
+        "tosse",
+        "catarro",
+        "dor ao respirar",
+        "aperto no peito",
+        "respiração curta",
+        "tosse com catarro"
+      ]
+    },
+    {
+      "id": "nefrologia",
+      "displayName": "Nefrologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "nefrologista",
+        "nefrologia",
+        "rim",
+        "rins",
+        "insuficiência renal",
+        "creatinina alta",
+        "ureia alta",
+        "hemodiálise",
+        "diálise",
+        "proteinúria"
+      ],
+      "weak": [
+        "inchaço",
+        "inchaço nas pernas",
+        "urina espumosa",
+        "pressão alta",
+        "dor no rim"
+      ]
+    },
+    {
+      "id": "alergia_e_imunologia",
+      "displayName": "Alergia e Imunologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "alergista",
+        "alergologia",
+        "alergia",
+        "urticária",
+        "angioedema",
+        "anafilaxia",
+        "teste alérgico",
+        "imunoterapia",
+        "vacina para alergia",
+        "rinite alérgica",
+        "alergia alimentar",
+        "rinite",
+        "asma alérgica"
+      ],
+      "weak": [
+        "coceira",
+        "espirros",
+        "coriza",
+        "nariz escorrendo",
+        "olhos coçando",
+        "alergia na pele",
+        "chiado",
+        "espirro",
+        "nariz coçando"
+      ]
+    },
+    {
+      "id": "hematologia_e_hemoterapia",
+      "displayName": "Hematologia e Hemoterapia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "hematologista",
+        "hematologia",
+        "anemia",
+        "ferro baixo",
+        "hemoglobina baixa",
+        "leucemia",
+        "linfoma",
+        "plaquetas baixas",
+        "plaquetas altas",
+        "hemofilia",
+        "distúrbio de coagulação"
+      ],
+      "weak": [
+        "hematócrito",
+        "hemograma",
+        "sangramento fácil",
+        "hematoma",
+        "manchas roxas",
+        "cansaço",
+        "palidez"
+      ]
+    },
+    {
+      "id": "oncologia_clinica",
+      "displayName": "Oncologia Clínica",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "oncologista",
+        "oncologia",
+        "câncer",
+        "tumor",
+        "neoplasia",
+        "quimioterapia",
+        "imunoterapia",
+        "metástase",
+        "biópsia"
+      ],
+      "weak": [
+        "nódulo",
+        "caroço",
+        "perda de peso",
+        "emagrecimento",
+        "cansaço",
+        "linfonodo",
+        "íngua"
+      ]
+    },
+    {
+      "id": "angiologia",
+      "displayName": "Angiologia",
+      "confidence": 0.7,
+      "generalist": false,
+      "strong": [
+        "angiologia",
+        "angiologista",
+        "varizes",
+        "vasinhos",
+        "trombose",
+        "dor e inchaço na perna",
+        "má circulação",
+        "claudicação"
+      ],
+      "weak": [
+        "perna inchada",
+        "pernas inchadas",
+        "inchaço nas pernas",
+        "dor na perna",
+        "formigamento na perna",
+        "câimbra",
+        "cãibra"
+      ]
+    },
+    {
+      "id": "reumatologia",
+      "displayName": "Reumatologia",
+      "confidence": 0.68,
+      "generalist": false,
+      "strong": [
+        "reumatologista",
+        "reumatologia",
+        "artrite",
+        "artrite reumatoide",
+        "lúpus",
+        "gota",
+        "fibromialgia",
+        "dor nas articulações",
+        "inchaço nas articulações",
+        "dor nas juntas",
+        "juntas inchadas",
+        "inflamação nas juntas"
+      ],
+      "weak": [
+        "dor articular",
+        "rigidez",
+        "rigidez de manhã",
+        "dor no corpo",
+        "dor crônica",
+        "inflamação",
+        "dor no corpo inteiro",
+        "dor generalizada"
+      ]
+    },
+    {
+      "id": "infectologia",
+      "displayName": "Infectologia",
+      "confidence": 0.68,
+      "generalist": false,
+      "strong": [
+        "infectologista",
+        "infectologia",
+        "hiv",
+        "aids",
+        "hepatite",
+        "tuberculose",
+        "dengue",
+        "zika",
+        "chikungunya",
+        "mononucleose",
+        "infecção recorrente",
+        "covid",
+        "covid-19",
+        "infecção de repetição"
+      ],
+      "weak": [
+        "febre prolongada",
+        "febre persistente",
+        "infecção",
+        "calafrios",
+        "ínguas",
+        "dor no corpo",
+        "mal-estar",
+        "febre que não passa"
+      ]
+    },
+    {
+      "id": "genetica_medica",
+      "displayName": "Genética Médica",
+      "confidence": 0.68,
+      "generalist": false,
+      "strong": [
+        "genética médica",
+        "geneticista",
+        "teste genético",
+        "painel genético",
+        "cariótipo",
+        "mutação",
+        "síndrome genética",
+        "doença hereditária"
+      ],
+      "weak": [
+        "histórico familiar",
+        "doença rara",
+        "malformação",
+        "aconselhamento genético"
+      ]
+    },
+    {
+      "id": "medicina_do_trabalho",
+      "displayName": "Medicina do Trabalho",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "medicina do trabalho",
+        "médico do trabalho",
+        "exame admissional",
+        "exame demissional",
+        "exame periódico",
+        "aso",
+        "cat",
+        "acidente de trabalho"
+      ],
+      "weak": [
+        "afastamento",
+        "inss",
+        "doença ocupacional",
+        "ergonomia"
+      ]
+    },
+    {
+      "id": "medicina_do_esporte",
+      "displayName": "Medicina do Esporte",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "medicina do esporte",
+        "médico do esporte",
+        "lesão esportiva",
+        "retorno ao esporte",
+        "atleta"
+      ],
+      "weak": [
+        "treino",
+        "corrida",
+        "academia",
+        "dor após treino"
+      ]
+    },
+    {
+      "id": "neonatologia",
+      "displayName": "Neonatologia",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "neonatologia",
+        "neonatologista",
+        "uti neonatal",
+        "recém-nascido",
+        "prematuro"
+      ],
+      "weak": [
+        "amamentação",
+        "dificuldade para mamar"
+      ]
+    },
+    {
+      "id": "cardiologia_pediatrica",
+      "displayName": "Cardiologia Pediátrica",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "cardiologia pediátrica",
+        "cardiologista pediátrico",
+        "cardiopatia congênita",
+        "sopro no coração do bebê"
+      ],
+      "weak": [
+        "cansaço ao mamar",
+        "falta de ar na criança"
+      ]
+    },
+    {
+      "id": "nefrologia_pediatrica",
+      "displayName": "Nefrologia Pediátrica",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "nefrologia pediátrica",
+        "rim na criança",
+        "infecção urinária recorrente em criança"
+      ],
+      "weak": [
+        "urina espumosa na criança",
+        "inchaço na criança"
+      ]
+    },
+    {
+      "id": "nutrologia",
+      "displayName": "Nutrologia",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "nutrologia",
+        "nutrologista",
+        "deficiência nutricional",
+        "suplementação",
+        "reeducação alimentar",
+        "avaliação nutricional"
+      ],
+      "weak": [
+        "dieta",
+        "ganho de peso",
+        "perda de peso",
+        "quero emagrecer",
+        "ganhar massa",
+        "perder gordura"
+      ]
+    },
+    {
+      "id": "cirurgia_vascular",
+      "displayName": "Cirurgia Vascular",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "cirurgia vascular",
+        "cirurgião vascular",
+        "cirurgia de varizes",
+        "operar varizes"
+      ],
+      "weak": [
+        "tratamento de varizes",
+        "ferida na perna",
+        "úlcera na perna"
+      ]
+    },
+    {
+      "id": "cirurgia_cardiovascular",
+      "displayName": "Cirurgia Cardiovascular",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "cirurgia cardiovascular",
+        "cirurgia cardíaca",
+        "ponte de safena",
+        "troca de válvula"
+      ],
+      "weak": [
+        "angioplastia",
+        "stent",
+        "cateterismo"
+      ]
+    },
+    {
+      "id": "neurocirurgia",
+      "displayName": "Neurocirurgia",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "neurocirurgia",
+        "neurocirurgião",
+        "cirurgia do cérebro",
+        "cirurgia de coluna"
+      ],
+      "weak": [
+        "compressão do nervo",
+        "dor irradiando"
+      ]
+    },
+    {
+      "id": "medicina_do_sono",
+      "displayName": "Medicina do Sono",
+      "confidence": 0.66,
+      "generalist": false,
+      "strong": [
+        "medicina do sono",
+        "polissonografia",
+        "apneia do sono",
+        "apneia",
+        "ronco",
+        "narcolepsia",
+        "não consigo dormir",
+        "acordo várias vezes"
+      ],
+      "weak": [
+        "insônia",
+        "sonolência diurna",
+        "sono leve",
+        "sono ruim"
+      ]
+    },
+    {
+      "id": "geriatria",
+      "displayName": "Geriatria",
+      "confidence": 0.65,
+      "generalist": false,
+      "strong": [
+        "geriatria",
+        "geriatra",
+        "idoso",
+        "idosa",
+        "terceira idade"
+      ],
+      "weak": [
+        "quedas",
+        "polifarmácia",
+        "fragilidade"
+      ]
+    },
+    {
+      "id": "medicina_fisica_e_reabilitacao_fisiatria",
+      "displayName": "Medicina Física e Reabilitação (Fisiatria)",
+      "confidence": 0.64,
+      "generalist": false,
+      "strong": [
+        "fisiatria",
+        "fisiatra",
+        "reabilitação",
+        "reabilitação motora"
+      ],
+      "weak": [
+        "fisioterapia",
+        "limitação de movimento",
+        "dor crônica"
+      ]
+    },
+    {
+      "id": "cirurgia_toracica",
+      "displayName": "Cirurgia Torácica",
+      "confidence": 0.64,
+      "generalist": false,
+      "strong": [
+        "cirurgia torácica",
+        "cirurgião torácico",
+        "pneumotórax"
+      ],
+      "weak": [
+        "nódulo no pulmão",
+        "pleura"
+      ]
+    },
+    {
+      "id": "cirurgia_do_aparelho_digestivo",
+      "displayName": "Cirurgia do Aparelho Digestivo",
+      "confidence": 0.64,
+      "generalist": false,
+      "strong": [
+        "cirurgia digestiva",
+        "cirurgia do aparelho digestivo",
+        "cirurgia bariátrica",
+        "bariátrica"
+      ],
+      "weak": [
+        "hérnia de hiato",
+        "refluxo cirurgia"
+      ]
+    },
+    {
+      "id": "cirurgia_de_cabeca_e_pescoco",
+      "displayName": "Cirurgia de Cabeça e Pescoço",
+      "confidence": 0.64,
+      "generalist": false,
+      "strong": [
+        "cirurgia de cabeça e pescoço",
+        "cirurgia cabeca e pescoco",
+        "nódulo no pescoço",
+        "tireoide nódulo"
+      ],
+      "weak": [
+        "rouquidão persistente",
+        "caroço no pescoço"
+      ]
+    },
+    {
+      "id": "radioterapia",
+      "displayName": "Radioterapia",
+      "confidence": 0.62,
+      "generalist": false,
+      "strong": [
+        "radioterapia",
+        "braquiterapia",
+        "acelerador linear",
+        "planejamento de radioterapia"
+      ],
+      "weak": [
+        "tratamento oncológico",
+        "quimioterapia",
+        "tumor"
+      ]
+    },
+    {
+      "id": "cirurgia_geral",
+      "displayName": "Cirurgia Geral",
+      "confidence": 0.62,
+      "generalist": false,
+      "strong": [
+        "cirurgia geral",
+        "cirurgião geral",
+        "apendicite",
+        "hérnia",
+        "colecistectomia"
+      ],
+      "weak": [
+        "pré-operatório",
+        "pós-operatório",
+        "curativo"
+      ]
+    },
+    {
+      "id": "cirurgia_pediatrica",
+      "displayName": "Cirurgia Pediátrica",
+      "confidence": 0.62,
+      "generalist": false,
+      "strong": [
+        "cirurgia pediátrica",
+        "cirurgião pediátrico",
+        "fimose",
+        "hérnia inguinal criança"
+      ],
+      "weak": [
+        "cirurgia em criança",
+        "meu filho precisa operar",
+        "minha filha precisa operar"
+      ]
+    },
+    {
+      "id": "pediatria",
+      "displayName": "Pediatria",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "pediatra",
+        "criança",
+        "bebê",
+        "recém-nascido",
+        "meu filho",
+        "minha filha"
+      ],
+      "weak": [
+        "vacina",
+        "vacinas",
+        "puericultura",
+        "crescimento"
+      ]
+    },
+    {
+      "id": "anestesiologia",
+      "displayName": "Anestesiologia",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "anestesia",
+        "anestesiologista",
+        "anestesista",
+        "sedação",
+        "raquidiana",
+        "peridural"
+      ],
+      "weak": [
+        "pré-anestésico",
+        "reação à anestesia"
+      ]
+    },
+    {
+      "id": "radiologia_e_diagnostico_por_imagem",
+      "displayName": "Radiologia e Diagnóstico por Imagem",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "tomografia",
+        "ressonância",
+        "ultrassom",
+        "raio-x",
+        "laudo de imagem"
+      ],
+      "weak": [
+        "exame de imagem",
+        "achado no exame",
+        "alteração no exame"
+      ]
+    },
+    {
+      "id": "medicina_intensiva",
+      "displayName": "Medicina Intensiva",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "uti",
+        "cti",
+        "intensivista",
+        "ventilação mecânica",
+        "intubação"
+      ],
+      "weak": [
+        "paciente crítico",
+        "monitorização"
+      ]
+    },
+    {
+      "id": "medicina_de_emergencia",
+      "displayName": "Medicina de Emergência",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "pronto socorro",
+        "pronto atendimento",
+        "upa",
+        "samu",
+        "urgência",
+        "emergência"
+      ],
+      "weak": [
+        "observação",
+        "fui ao pronto socorro"
+      ]
+    },
+    {
+      "id": "medicina_paliativa",
+      "displayName": "Medicina Paliativa",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "cuidados paliativos",
+        "medicina paliativa",
+        "paliativista",
+        "qualidade de vida",
+        "controle de sintomas"
+      ],
+      "weak": [
+        "doença avançada",
+        "cuidado domiciliar",
+        "dor oncológica"
+      ]
+    },
+    {
+      "id": "endoscopia_digestiva",
+      "displayName": "Endoscopia Digestiva",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "endoscopia",
+        "gastroscopia",
+        "colonoscopia",
+        "endoscopia digestiva",
+        "pólipo"
+      ],
+      "weak": [
+        "preparo para colonoscopia",
+        "preparo para endoscopia",
+        "laudo da endoscopia"
+      ]
+    },
+    {
+      "id": "medicina_legal_e_pericia_medica",
+      "displayName": "Medicina Legal e Perícia Médica",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "perícia médica",
+        "perito médico",
+        "laudo pericial",
+        "inss"
+      ],
+      "weak": [
+        "afastamento",
+        "auxílio-doença",
+        "processo"
+      ]
+    },
+    {
+      "id": "medicina_nuclear",
+      "displayName": "Medicina Nuclear",
+      "confidence": 0.6,
+      "generalist": false,
+      "strong": [
+        "medicina nuclear",
+        "cintilografia",
+        "pet-ct",
+        "spect",
+        "iodo radioativo"
+      ],
+      "weak": [
+        "captação",
+        "laudo do pet",
+        "exame radioativo"
+      ]
+    },
+    {
+      "id": "medicina_de_familia_e_comunidade",
+      "displayName": "Medicina de Família e Comunidade",
+      "confidence": 0.58,
+      "generalist": false,
+      "strong": [
+        "médico de família",
+        "medicina de família",
+        "saúde da família"
+      ],
+      "weak": [
+        "prevenção",
+        "rotina",
+        "posto de saúde"
+      ]
+    },
+    {
+      "id": "patologia",
+      "displayName": "Patologia",
+      "confidence": 0.58,
+      "generalist": false,
+      "strong": [
+        "patologia",
+        "patologista",
+        "anatomopatológico",
+        "biópsia"
+      ],
+      "weak": [
+        "laudo anatomopatológico",
+        "imuno-histoquímica"
+      ]
+    },
+    {
+      "id": "patologia_clinica_medicina_laboratorial",
+      "displayName": "Patologia Clínica / Medicina Laboratorial",
+      "confidence": 0.58,
+      "generalist": false,
+      "strong": [
+        "medicina laboratorial",
+        "patologia clínica",
+        "hemograma",
+        "exame de sangue",
+        "exames de sangue"
+      ],
+      "weak": [
+        "resultado do exame",
+        "jejum",
+        "coleta"
+      ]
+    },
+    {
+      "id": "medicina_preventiva_e_social",
+      "displayName": "Medicina Preventiva e Social",
+      "confidence": 0.58,
+      "generalist": false,
+      "strong": [
+        "saúde pública",
+        "epidemiologia",
+        "medicina preventiva"
+      ],
+      "weak": [
+        "prevenção",
+        "rastreamento",
+        "campanha de vacinação"
+      ]
+    },
+    {
+      "id": "clinica_medica",
+      "displayName": "Clínica Médica",
+      "confidence": 0.55,
+      "generalist": true,
+      "strong": [
+        "check-up",
+        "consulta geral",
+        "clínico geral",
+        "exames de rotina",
+        "consulta de rotina",
+        "avaliação geral"
+      ],
+      "weak": [
+        "cansaço",
+        "mal-estar",
+        "febre",
+        "dor no corpo"
+      ]
+    }
+  ]
+}
