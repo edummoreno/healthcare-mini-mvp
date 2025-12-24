@@ -7,7 +7,52 @@
     "minScore": 1
   },
   "fallbackSpecialtyId": "clinica_medica",
-  "synonyms": {},
+  "synonyms": {
+    "dor de cabeça": [
+      "cefaleia"
+    ],
+    "falta de ar": [
+      "dispneia"
+    ],
+    "desmaio": [
+      "síncope"
+    ],
+    "formigamento": [
+      "parestesia"
+    ],
+    "dor nas costas": [
+      "lombalgia"
+    ],
+    "dor no estômago": [
+      "epigastralgia",
+      "dor epigástrica"
+    ],
+    "azia": [
+      "pirose"
+    ],
+    "refluxo": [
+      "refluxo gastroesofágico",
+      "drge"
+    ],
+    "pressão alta": [
+      "hipertensão"
+    ],
+    "infecção urinária": [
+      "itu"
+    ],
+    "dor ao urinar": [
+      "disúria"
+    ],
+    "cálculo renal": [
+      "nefrolitíase"
+    ],
+    "palpitação": [
+      "palpitações"
+    ],
+    "cárie": [
+      "cáries"
+    ]
+  },
   "specialties": [
     {
       "id": "odontologia_dentista",
